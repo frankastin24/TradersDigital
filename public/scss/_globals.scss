@@ -1,0 +1,212 @@
+/* styles.scss */
+
+/* VARIABLES */
+$primary-color:#0074ab;
+$secondary-color: #f8f9fa;
+$green: #00969e;
+$font-stack: 'Inter', sans-serif;
+$border-radius: 8px;
+$container-padding:calc((50% - (1600px/2)) + 60px);
+
+/* GLOBAL */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-stack;
+    color: #333;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: $border-radius;
+}
+
+.container {
+    padding: 0 $container-padding;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+
+.btn-primary {
+    background: $green;
+    color: #fff;
+    padding: 0 20px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:20px;
+   
+}
+
+.btn-secondary {
+    background: transparent;
+    color: $green;
+    border: 2px solid $green;
+    padding: 0 20px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* HERO */
+
+
+/* TRUST BAR */
+
+
+
+
+
+
+
+/* SIGNUP FORM */
+.signup {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.signup h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.signup-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.signup-form input {
+    height: 50px;
+    padding: 0 12px;
+    border-radius: $border-radius;
+    border: 1px solid #ddd;
+}
+
+.signup-form button {
+    height: 50px;
+    background: $primary-color;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* FAQ */
+.faq {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.faq-item {
+    margin-bottom: 16px;
+    font-size: 16px;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* FINAL CTA */
+.final-cta {
+    padding: 60px 0;
+    text-align: center;
+    background: $secondary-color;
+}
+
+.final-cta h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.final-cta .btn-primary {
+    height: 60px;
+    width: 240px;
+    font-size: 20px;
+}
+
+/* FOOTER */
+footer {
+    background: #f1f1f1;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer .footer-links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+footer .footer-contact {
+    font-size: 14px;
+    color: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .features-grid,
+    .templates-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        margin-left: 0;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

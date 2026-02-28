@@ -1,0 +1,167 @@
+<%- getTemplatePart('main_site/header_secondary') %>
+
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <section class="sign-up container">
+
+        <div class="sign-up-hero-text">
+            <h1>Join Thousands of Trade Businesses Growing with Traders Digital</h1>
+            <p>Start your free trial today.</p>
+        </div>
+
+        <div class="card" x-data="signupForm()">
+
+            <!-- Progress Bar -->
+            <div class="progress">
+                <template x-for="i in 5">
+                    <div :class="step >= i ? 'active' : ''"></div>
+                </template>
+            </div>
+
+            <!-- Step 1 -->
+            <div x-show="step === 1">
+                <h2>Create Account</h2>
+                <input type="email" placeholder="Email" x-model="form.email">
+                <input type="password" placeholder="Password" x-model="form.password">
+                <button class="btn" @click="next()">Next</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div x-show="step === 2">
+                <h2>Select Business Type</h2>
+                <select x-model="form.businessType" @change="loadServices()">
+                    <option value="">Select trade</option>
+                    <option>Plumber</option>
+                    <option>Electrician</option>
+                    <option>Builder</option>
+                    <option>Joiner</option>
+                    <option>Roofer</option>
+                    <option>Landscaper</option>
+                    <option>Other</option>
+                </select>
+                <button class="btn-secondary btn" @click="prev()">Back</button>
+                <button class="btn" @click="next()">Next</button>
+            </div>
+
+            <!-- Step 3 -->
+            <div x-show="step === 3">
+                <h2>Select Services</h2>
+
+                <template x-for="service in services">
+                    <span class="service-tag" :class="selectedServices.includes(service) ? 'active' : ''"
+                        @click="toggleService(service)" x-text="service">
+                    </span>
+                </template>
+
+                <input type="text" placeholder="Add custom service" x-model="customService">
+                <button class="btn" @click="addService()">Add</button>
+
+                <br><br>
+                <button class="btn-secondary btn" @click="prev()">Back</button>
+                <button class="btn" @click="next()">Next</button>
+            </div>
+
+            <!-- Step 4 -->
+            <div x-show="step === 4">
+                <h2>Business Name</h2>
+                <input type="text" placeholder="Business Name" x-model="form.businessName">
+                <button class="btn-secondary btn" @click="prev()">Back</button>
+                <button class="btn" @click="next()">Next</button>
+            </div>
+
+            <!-- Step 5 -->
+            <div x-show="step === 5">
+                <h2>Business Details</h2>
+                <input type="text" placeholder="Location (Town/City)" x-model="form.location">
+                <input type="number" placeholder="Years in business" x-model="form.years">
+                <input type="text" placeholder="Phone Number" x-model="form.phone">
+                <textarea placeholder="Short description" x-model="form.description"></textarea>
+
+                <button class="btn-secondary btn" @click="prev()">Back</button>
+                <button class="btn" @click="submit()">Create Account</button>
+            </div>
+
+        </div>
+
+
+
+
+    </section>
+
+    <script>
+        function signupForm() {
+            return {
+                step: 1,
+
+                form: {
+                    email: '',
+                    password: '',
+                    businessType: '',
+                    businessName: '',
+                    location: '',
+                    years: '',
+                    phone: '',
+                    description: ''
+                },
+
+                services: [],
+                selectedServices: [],
+                customService: '',
+
+                serviceTemplates: {
+                    Plumber: ['Emergency Repairs', 'Boiler Install', 'Bathroom Install'],
+                    Electrician: ['Rewiring', 'Consumer Units', 'EV Chargers'],
+                    Builder: ['Extensions', 'Renovations', 'Loft Conversions'],
+                    Joiner: ['Custom Cabinets', 'Doors', 'Staircases'],
+                    Roofer: ['Roof Repairs', 'Flat Roofing', 'Guttering'],
+                    Landscaper: ['Patios', 'Driveways', 'Garden Design'],
+                    Other: []
+                },
+
+                next() {
+                    if (this.step < 5) this.step++;
+                },
+
+                prev() {
+                    if (this.step > 1) this.step--;
+                },
+
+                loadServices() {
+                    this.services = this.serviceTemplates[this.form.businessType] || [];
+                    this.selectedServices = [];
+                },
+
+                toggleService(service) {
+                    if (this.selectedServices.includes(service)) {
+                        this.selectedServices = this.selectedServices.filter(s => s !== service);
+                    } else {
+                        this.selectedServices.push(service);
+                    }
+                },
+
+                addService() {
+                    if (this.customService.trim() !== '') {
+                        this.services.push(this.customService);
+                        this.selectedServices.push(this.customService);
+                        this.customService = '';
+                    }
+                },
+
+                submit() {
+                    const payload = {
+                        ...this.form,
+                        services: this.selectedServices
+                    };
+
+                    console.log("Submitting:", payload);
+
+                    fetch('/api/signup', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                }
+            }
+        }
+    </script>
+
+    <%- getTemplatePart('main_site/footer') %>

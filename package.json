@@ -1,0 +1,47 @@
+{
+  "name": "hostcert",
+  "version": "1.0.0",
+  "description": "A web platform for the hospitality sector",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankastin24/hospcert.git"
+  },
+  "keywords": [
+    "certification",
+    "hospitality",
+    "platform"
+  ],
+  "author": "Frank Astin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frankastin24/hospcert/issues"
+  },
+  "homepage": "https://github.com/frankastin24/hospcert#readme",
+  "dependencies": {
+    "@babel/parser": "^7.28.0",
+    "@babel/traverse": "^7.28.0",
+    "argon2": "^0.44.0",
+    "babel": "^5.8.38",
+    "busboy": "^1.6.0",
+    "cheerio": "^1.1.2",
+    "connect-session-sequelize": "^8.0.2",
+    "create": "^0.5.5",
+    "dayjs": "^1.11.19",
+    "ejs": "^3.1.10",
+    "eta": "^3.5.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.16.3",
+    "nodemon": "^3.1.10",
+    "npm": "^10.9.3",
+    "nunjucks": "^3.2.4",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7",
+    "vue": "^3.5.21"
+  }
+}
