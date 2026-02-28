@@ -1,8 +1,72 @@
 .sign-up {
     padding-top:140px;
-    height:100vh;
-}
+    text-align: center;
+    h2 {
+        font-size: 36px;
+        margin: 40px 0;    
+    }
+    .pricing-grid {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+margin-top:40px;
+        .selected-badge {
+            background: $green;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
 
+        .pricing-card {
+            position: relative;
+            &.selected {
+                .selected-badge {
+                }
+               
+               
+            }
+             border: 2px solid $green;
+          text-align: center;
+            padding: 30px;
+            width:400px;  
+            border-radius:20px;
+        }
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .pricing-card p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}
+.interval {
+    gap:10px;
+    label {
+        border:2px solid $green;
+        padding: 8px 20px;
+        border-radius: 15px;
+        cursor: pointer;   
+        background: transparent;
+        color:$green;
+    }
+
+    input[type="radio"] {
+        display: none;
+    
+        &:checked + label {
+            background: $green;
+            color: #fff;
+        }
+    }
+
+}
 .card {
     max-width: 600px;
     margin: 50px auto;

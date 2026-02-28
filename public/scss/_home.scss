@@ -18,11 +18,13 @@
             font-size: 80px;
             line-height: 100px;
             margin-bottom: 20px;
+            color:#03585c;
         }
 
         .hero-text p {
             font-size: 40px;
             margin-bottom: 20px;
+            color:#333;
         }
 
         h5 {
@@ -33,10 +35,13 @@
         }
 
         .hero-buttons {
-            display: flex;
-            gap: 16px;
+            
             a {
                  font-size: 20px;
+                 background: #03585c;
+                 color: #fff;
+                 padding: 20px 30px;
+                 border-radius: 40px;
             }
         }
 

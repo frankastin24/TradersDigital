@@ -1,14 +1,51 @@
 <%- getTemplatePart('main_site/header_secondary') %>
 
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <section class="sign-up container">
+    <section x-data="signupForm()" class="sign-up container">
 
         <div class="sign-up-hero-text">
             <h1>Join Thousands of Trade Businesses Growing with Traders Digital</h1>
-            <p>Start your free trial today.</p>
+            <p>Free for 7 days then billed annually or monthly</p>
         </div>
 
-        <div class="card" x-data="signupForm()">
+        <h2>Select Package</h2>
+
+        <div class="flex justify-center interval">
+            <input x-model="form.billingMonthly" type="radio" id="monthly" value="monthly" name="billing" checked>
+            <label for="monthly">Monthly</label>
+            <input x-model="form.billingAnnually" type="radio" id="annually" value="annually" name="billing">
+            <label for="annually">Annually(Save 20%)</label>
+        </div>
+
+        <div class="pricing-grid">
+
+            <div  class="pricing-card">
+                <h4 x-show="form.package === 'basic'" class="selected-badge">Selected</h4>
+                <h3>Basic</h3>
+                <p>£19/mo</p>
+                <ul>
+                    <li>Website, Domain & Email</li>
+                </ul>
+                <button x-show="form.package === 'professional'" @click="selectPackage('basic')" class="btn-primary">Select</button>
+            </div>
+
+            <div  class=" pricing-card highlight">
+                <h4 x-show="form.package === 'professional'" class="selected-badge">Selected</h4>
+                <h3>Professional</h3>
+                <p>£49/mo</p>
+                <ul>
+                    <li>Website & Email</li>
+                    <li>Job, Customer, & Invoice Management</li>
+                   
+                </ul>
+
+                <button x-show="form.package === 'basic'" @click="selectPackage('professional')" class="btn-primary">Select</button>
+            </div>
+        </div>
+
+        <h2>Create Account</h2>
+
+        <div class="card">
 
             <!-- Progress Bar -->
             <div class="progress">
@@ -19,7 +56,6 @@
 
             <!-- Step 1 -->
             <div x-show="step === 1">
-                <h2>Create Account</h2>
                 <input type="email" placeholder="Email" x-model="form.email">
                 <input type="password" placeholder="Password" x-model="form.password">
                 <button class="btn" @click="next()">Next</button>
@@ -38,8 +74,10 @@
                     <option>Landscaper</option>
                     <option>Other</option>
                 </select>
-                <button class="btn-secondary btn" @click="prev()">Back</button>
-                <button class="btn" @click="next()">Next</button>
+                <div class="flex justify-between">
+                    <button class="btn" @click="prev()">Back</button>
+                    <button class="btn" @click="next()">Next</button>
+                </div>
             </div>
 
             <!-- Step 3 -->
@@ -55,17 +93,20 @@
                 <input type="text" placeholder="Add custom service" x-model="customService">
                 <button class="btn" @click="addService()">Add</button>
 
-                <br><br>
-                <button class="btn-secondary btn" @click="prev()">Back</button>
-                <button class="btn" @click="next()">Next</button>
+                <div class="flex justify-between">
+                    <button class="btn" @click="prev()">Back</button>
+                    <button class="btn" @click="next()">Next</button>
+                </div>
             </div>
 
             <!-- Step 4 -->
             <div x-show="step === 4">
                 <h2>Business Name</h2>
                 <input type="text" placeholder="Business Name" x-model="form.businessName">
-                <button class="btn-secondary btn" @click="prev()">Back</button>
-                <button class="btn" @click="next()">Next</button>
+                <div class="flex justify-between">
+                    <button class="btn" @click="prev()">Back</button>
+                    <button class="btn" @click="next()">Next</button>
+                </div>
             </div>
 
             <!-- Step 5 -->
@@ -76,8 +117,10 @@
                 <input type="text" placeholder="Phone Number" x-model="form.phone">
                 <textarea placeholder="Short description" x-model="form.description"></textarea>
 
-                <button class="btn-secondary btn" @click="prev()">Back</button>
-                <button class="btn" @click="submit()">Create Account</button>
+                <div class="flex justify-between">
+                    <button class="btn" @click="prev()">Back</button>
+                    <button class="btn" @click="submit()">Create Account</button>
+                </div>
             </div>
 
         </div>
@@ -100,7 +143,10 @@
                     location: '',
                     years: '',
                     phone: '',
-                    description: ''
+                    description: '',
+                    billingMonthly: false,
+                    billingAnnually: true,
+                    package: 'professional'
                 },
 
                 services: [],

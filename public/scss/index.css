@@ -1,6 +1,12 @@
 /* styles.scss */
 /* VARIABLES */
 /* GLOBAL */
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -213,6 +219,7 @@ footer .footer-contact {
 }
 #main-header .header-left nav {
   margin-left: 32px;
+  margin-top: 4px;
 }
 #main-header .navbar {
   height: 80px;
@@ -242,6 +249,7 @@ footer .footer-contact {
 #main-header .nav-buttons .btn-secondary {
   border-radius: 40px;
   padding: 10px 20px;
+  font-size: 18px;
 }
 #main-header .login {
   display: none;
@@ -264,22 +272,24 @@ footer .footer-contact {
   font-size: 80px;
   line-height: 100px;
   margin-bottom: 20px;
+  color: #03585c;
 }
 .hero .hero-content .hero-text p {
   font-size: 40px;
   margin-bottom: 20px;
+  color: #333;
 }
 .hero .hero-content h5 {
   font-size: 16px;
   margin-bottom: 20px;
   font-weight: 600;
 }
-.hero .hero-content .hero-buttons {
-  display: flex;
-  gap: 16px;
-}
 .hero .hero-content .hero-buttons a {
   font-size: 20px;
+  background: #03585c;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 40px;
 }
 .hero .hero-content .hero-video iframe {
   width: 100%;
@@ -466,7 +476,65 @@ FEATURES
 
 .sign-up {
   padding-top: 140px;
-  height: 100vh;
+  text-align: center;
+}
+.sign-up h2 {
+  font-size: 36px;
+  margin: 40px 0;
+}
+.sign-up .pricing-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.sign-up .pricing-grid .selected-badge {
+  background: #00969e;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+.sign-up .pricing-grid .pricing-card {
+  position: relative;
+}
+.sign-up .pricing-grid .pricing-card {
+  border: 2px solid #00969e;
+  text-align: center;
+  padding: 30px;
+  width: 400px;
+  border-radius: 20px;
+}
+.sign-up .pricing-grid .pricing-card h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.sign-up .pricing-grid .pricing-card p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.interval {
+  gap: 10px;
+}
+.interval label {
+  border: 2px solid #00969e;
+  padding: 8px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: transparent;
+  color: #00969e;
+}
+.interval input[type=radio] {
+  display: none;
+}
+.interval input[type=radio]:checked + label {
+  background: #00969e;
+  color: #fff;
 }
 
 .card {

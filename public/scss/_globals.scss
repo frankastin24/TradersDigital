@@ -9,7 +9,11 @@ $border-radius: 8px;
 $container-padding:calc((50% - (1600px/2)) + 60px);
 
 /* GLOBAL */
-
+ul,li {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
 * {
     box-sizing: border-box;
     margin: 0;
