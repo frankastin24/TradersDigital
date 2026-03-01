@@ -38,6 +38,10 @@ button {
   display: flex;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .flex-column {
   flex-direction: column;
 }
@@ -203,9 +207,10 @@ footer .footer-contact {
 }
 #main-header .header-left .branding {
   gap: 6px;
+  flex-direction: column;
 }
 #main-header .header-left .branding .logo {
-  width: 70px;
+  width: 100px;
 }
 #main-header .header-left .branding h3 {
   background: linear-gradient(90deg, rgb(0, 116, 171) 0%, rgb(0, 150, 158) 100%);
@@ -224,6 +229,7 @@ footer .footer-contact {
 #main-header .header-left nav {
   margin-left: 32px;
   margin-top: 4px;
+  display: none;
 }
 #main-header .navbar {
   height: 80px;
@@ -259,6 +265,75 @@ footer .footer-contact {
   display: none;
 }
 
+@media (min-width: 768px) {
+  #main-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.99);
+    z-index: 999;
+  }
+  #main-header .header-left .branding {
+    gap: 6px;
+    flex-direction: row;
+  }
+  #main-header .header-left .branding .logo {
+    width: 70px;
+  }
+  #main-header .header-left .branding h3 {
+    background: linear-gradient(90deg, rgb(0, 116, 171) 0%, rgb(0, 150, 158) 100%);
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 4px;
+    background-clip: text;
+    -webkit-background-clip: text; /* Required for Chrome/Safari */
+    color: transparent;
+    -webkit-text-fill-color: transparent; /* Required for Safari */
+    font-weight: 600;
+  }
+  #main-header .header-left .branding h3 span {
+    color: #00969e;
+  }
+  #main-header .header-left nav {
+    margin-left: 32px;
+    margin-top: 4px;
+  }
+  #main-header .navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  #main-header .navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  #main-header .nav-links {
+    gap: 32px;
+    color: #0074ab;
+    font-size: 18px;
+  }
+  #main-header .nav-links .btn-primary,
+  #main-header .nav-links .btn-secondary {
+    border-radius: 40px;
+    padding: 10px 20px;
+  }
+  #main-header .nav-buttons {
+    gap: 14px;
+  }
+  #main-header .nav-buttons .btn-primary,
+  #main-header .nav-buttons .btn-secondary {
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  #main-header .login {
+    display: none;
+  }
+}
 .hero {
   background-image: url("/public/img/hero.png");
   background-size: cover;
@@ -267,7 +342,7 @@ footer .footer-contact {
 .hero .hero-content {
   padding-top: 210px;
   padding-bottom: 80px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.8);
 }
 .hero .hero-content .hero-text {
   max-width: 800px;
@@ -276,12 +351,16 @@ footer .footer-contact {
   font-size: 80px;
   line-height: 100px;
   margin-bottom: 20px;
-  color: #03585c;
+  color: #04e0ec;
+  text-align: center;
+  font-size: 51px;
+  line-height: 60px;
+  margin-top: 100px;
 }
 .hero .hero-content .hero-text p {
   font-size: 40px;
   margin-bottom: 20px;
-  color: #016696;
+  color: #2191c6;
 }
 .hero .hero-content h5 {
   font-size: 16px;
@@ -290,7 +369,7 @@ footer .footer-contact {
 }
 .hero .hero-content .hero-buttons a {
   font-size: 20px;
-  background: #03585c;
+  background: #04e0ec;
   color: #fff;
   padding: 20px 30px;
   border-radius: 40px;
@@ -322,13 +401,40 @@ footer .footer-contact {
   font-size: 36px;
 }
 
-/* 
-
-
-PROBLEM SECTION 
-
-
-*/
+@media (min-width: 768px) {
+  .hero .hero-content .hero-text {
+    max-width: 800px;
+  }
+  .hero .hero-content .hero-text h1 {
+    font-size: 80px;
+    line-height: 100px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    text-align: left;
+  }
+  .hero .hero-content .hero-text p {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .hero .hero-content h5 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .hero .hero-content .hero-buttons a {
+    font-size: 20px;
+    background: #03585c;
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 40px;
+  }
+  .hero .hero-content .hero-video iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border-radius: 12px;
+  }
+}
 .problem {
   padding: 60px 0;
   text-align: center;
@@ -355,7 +461,6 @@ PROBLEM SECTION
   width: 440px;
   height: 120px;
   background: #fff;
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -365,18 +470,10 @@ PROBLEM SECTION
   line-height: 34px;
 }
 .problem .problem-grid .problem-item span {
-  color: #0074ab;
   font-size: 24px;
   margin-right: 16px;
 }
 
-/* 
-
-
-FEATURES
-
-
-*/
 .features {
   padding: 60px 0;
   text-align: center;
@@ -395,7 +492,6 @@ FEATURES
 }
 .features .features-grid .feature-item {
   width: 400px;
-  border-radius: 8px;
   padding: 30px;
   text-align: center;
   width: 280px;
@@ -408,7 +504,6 @@ FEATURES
   font-size: 16px;
 }
 
-/* PRICING */
 .pricing {
   padding: 60px 0;
   text-align: center;
@@ -489,13 +584,35 @@ FEATURES
 }
 .faq p {
   text-align: center;
-  width: 600px;
+  width: 100%;
   margin: auto;
   margin-top: 20px;
 }
 
+@media (min-width: 768px) {
+  .faq {
+    text-align: center;
+  }
+  .faq h3 {
+    font-size: 30px;
+  }
+  .faq p {
+    width: 600px;
+  }
+}
+.sign-up-hero {
+  background: #0074ab;
+  color: #FFF;
+  text-align: center;
+  margin-top: 87px;
+  padding: 40px 0;
+}
+.sign-up-hero h1 {
+  font-size: 40px;
+}
+
 .sign-up {
-  padding-top: 140px;
+  padding-top: 40px;
   text-align: center;
 }
 .sign-up h2 {
@@ -524,21 +641,28 @@ FEATURES
 }
 .sign-up .pricing-grid .pricing-card {
   position: relative;
-}
-.sign-up .pricing-grid .pricing-card {
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
   border: 2px solid #00969e;
   text-align: center;
   padding: 30px;
   width: 400px;
   border-radius: 20px;
 }
+.sign-up .pricing-grid .pricing-card button {
+  font-size: 18px;
+  margin-top: 0px;
+}
 .sign-up .pricing-grid .pricing-card h3 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .sign-up .pricing-grid .pricing-card p {
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .interval {
@@ -560,8 +684,12 @@ FEATURES
   color: #fff;
 }
 
+.card h3 {
+  font-size: 40px;
+}
 .card {
-  max-width: 600px;
+  max-width: 790px;
+  height: 640px;
   margin: 50px auto;
   background: #00969e;
   color: #FFF;
@@ -623,7 +751,33 @@ textarea {
   cursor: pointer;
 }
 
+input.search {
+  margin-top: 0px;
+}
+
 .service-tag.active {
   background: #0074ab;
   color: white;
+}
+
+.trade-types {
+  margin-top: 20px;
+}
+
+.btn-small {
+  background: #FFF;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #00969e;
+  margin-bottom: 20px;
+}
+
+.trade-option {
+  background: #FFF;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #00969e;
+  margin: 10px;
+  min-width: calc(50% - 20px);
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */

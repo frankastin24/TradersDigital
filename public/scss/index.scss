@@ -1,4 +1,4 @@
-@import 'globals';
-@import 'header';
-@import 'home';
-@import 'signup';
+@use 'globals' as *;
+@use 'header';
+@use 'home/home';
+@use 'signup';

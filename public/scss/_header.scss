@@ -1,3 +1,5 @@
+@use 'globals' as *;
+
 #main-header {
     padding: 20px 0;
     border-bottom: 1px solid #ddd;
@@ -10,6 +12,97 @@
     .header-left {
         .branding {
             gap:6px;
+            flex-direction: column;
+        .logo {
+            width: 100px;
+        }
+
+        h3 {
+            background:linear-gradient(90deg,rgba(0, 116, 171, 1) 0%, rgba(0, 150, 158, 1) 100%);
+            font-size: 24px;
+            font-weight: normal;
+            margin-top: 4px;
+
+            background-clip: text;
+    -webkit-background-clip: text;   /* Required for Chrome/Safari */
+
+    color: transparent;
+    -webkit-text-fill-color: transparent; /* Required for Safari */
+            font-weight: 600;
+
+            span {
+                
+                color: $green;
+            }
+        }
+    }
+    nav {
+        margin-left:32px;
+            margin-top: 4px;
+            display:none;
+    }
+    }
+
+    
+
+    .navbar {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .nav-links {
+       
+        gap: 32px;
+        color: $primary-color;
+        font-size:18px;
+
+        .btn-primary,
+        .btn-secondary {
+            border-radius: 40px;
+            padding: 10px 20px;
+        }
+    }
+    .nav-buttons {
+       gap: 14px;
+      
+
+        .btn-primary,
+        .btn-secondary {
+            border-radius: 40px;
+            padding: 10px 20px;
+            font-size:18px;
+        }
+    }
+
+    .login {
+        display: none;
+    }
+
+}
+
+@media (min-width:768px) {
+
+    #main-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.99);
+    z-index:999;
+
+    .header-left {
+        .branding {
+            gap:6px;
+            flex-direction: row;
         .logo {
             width: 70px;
         }
@@ -81,5 +174,7 @@
     .login {
         display: none;
     }
+
+}
 
 }

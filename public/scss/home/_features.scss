@@ -1,0 +1,37 @@
+@use '../globals' as *;
+.features {
+    padding: 60px 0;
+    text-align: center;
+
+    background:$green;
+    color:#fff;
+
+    h2 {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    .features-grid {
+        display: flex;
+        justify-content: center;
+       flex-wrap: wrap;
+        gap: 30px;
+
+        .feature-item {
+           
+             width: 400px;
+            padding: 30px;
+            text-align: center;
+            width:280px;
+
+            h3 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}

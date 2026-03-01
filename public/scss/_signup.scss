@@ -1,5 +1,17 @@
+@use 'globals' as *;
+
+.sign-up-hero {
+    background:$primary-color;
+    color:#FFF;
+    text-align: center;
+    margin-top:87px;
+    padding:40px 0;
+    h1 {
+        font-size:40px;
+    }
+}
 .sign-up {
-    padding-top:140px;
+    padding-top:40px;
     text-align: center;
     h2 {
         font-size: 36px;
@@ -12,6 +24,7 @@
         display: flex;
         gap: 30px;
         justify-content: center;
+        
         flex-wrap: wrap;
 margin-top:40px;
         .selected-badge {
@@ -27,25 +40,29 @@ margin-top:40px;
 
         .pricing-card {
             position: relative;
-            &.selected {
-                .selected-badge {
-                }
-               
-               
-            }
+              height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor:pointer;
+           
              border: 2px solid $green;
           text-align: center;
             padding: 30px;
             width:400px;  
             border-radius:20px;
+            button {
+                font-size: 18px;
+                margin-top:0px;
+            }
         }
         .pricing-card h3 {
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .pricing-card p {
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
     }
 }
@@ -71,7 +88,11 @@ margin-top:40px;
 
 }
 .card {
-    max-width: 600px;
+    h3 {
+        font-size: 40px;
+    }
+    max-width: 790px;
+    height:640px;
     margin: 50px auto;
     background: $green;
     color:#FFF;
@@ -133,8 +154,30 @@ textarea {
     border-radius: 20px;
     cursor: pointer;
 }
-
+input.search {
+    margin-top:0px;
+}
 .service-tag.active {
     background: $primary-color;
     color: white;
 }
+.trade-types {
+   margin-top:20px;
+}
+.btn-small {
+     background:#FFF;
+    border-radius: 10px;
+    padding:5px 10px;
+    color:$green;
+    margin-bottom:20px;
+
+}
+.trade-option {
+    background:#FFF;
+    border-radius: 10px;
+    padding:5px 10px;
+    color:$green;
+    margin:10px;
+    min-width:calc(50% - 20px);
+    cursor:pointer;
+} 
