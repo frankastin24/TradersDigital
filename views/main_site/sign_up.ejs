@@ -3,22 +3,20 @@
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <div class="sign-up-hero">
         <h1>Join Thousands of Trade Businesses<br>Growing with Tradeely</h1>
-        <p>Free for 7 days then billed annually or monthly</p>
-    </div>
+     </div>
     <section x-data="signupForm()" class="sign-up container">
 
 
 
-        <h2>Select Package</h2>
+        <h2>Start Your Free Trail Today</h2>
 
-        <h3>Save almost 25% with Annual Billing</h3>
-
+       
         <div class="flex justify-center interval">
             <input x-model="form.billing" type="radio" id="monthly" value="monthly" name="billing">
             <label for="monthly">Monthly</label>
 
             <input x-model="form.billing" type="radio" id="annually" value="annual" name="billing">
-            <label for="annually">Annually</label>
+            <label for="annually">Annually (save 25%)</label>
         </div>
 
         <div class="pricing-grid">
@@ -26,7 +24,8 @@
             <div @click="selectPackage('basic')" class="pricing-card">
                 <h4 x-show="form.package === 'basic'" class="selected-badge">Selected</h4>
                 <h3>Basic</h3>
-                <p>£<span x-text="amount('basic')"></span>/mo</p>
+                <h4>Free for 7 days</h4>
+                <p>then £<span x-text="amount('basic')"></span>/mo</p>
 
                 <button x-show="form.package === 'professional'" class="btn-primary">Select</button>
             </div>
@@ -34,12 +33,11 @@
             <div @click="selectPackage('professional')" class=" pricing-card highlight">
                 <h4 x-show="form.package === 'professional'" class="selected-badge">Selected</h4>
                 <h3>Professional</h3>
-                <p>£<span x-text="amount('professional')"></span>/mo</p>
+                <h4>Free for 7 days</h4>
+                <p>then £<span x-text="amount('professional')"></span>/mo</p>
                 <button x-show="form.package === 'basic'" class="btn-primary">Select</button>
             </div>
         </div>
-
-        <h2>Create Account</h2>
 
         <div class="card">
 
@@ -52,18 +50,47 @@
 
             <!-- Step 1 -->
             <div x-show="step === 1">
+                <h3>Register</h3>
+                
                 <input type="email" placeholder="Email" x-model="form.email">
                 <p class="error" x-show="error.displayEmail" x-text="errors.email"></p>
+                
                 <input type="password" placeholder="Password" x-model="form.password">
                 <p class="error" x-show="error.displayPassword" x-text="errors.password"></p>
-                <button class="btn" @click="next()">Next</button>
+                
+                <button class="register-button" @click="next()">Continue With Email</button>
+
+                <button class="register-button" id="register-with-fb">Continue With Facebook</button>
+                <button class="register-button" id="register-with-google">Continue With Google</button>
+                <button class="register-button" id="register-with-apple">Continue With Apple</button>
+
+                
             </div>
 
             <!-- Step 2 -->
             <div x-show="step === 2">
                 <h3>Select Business Type</h3>
 
-                <input class="search" placeholder="Search..." />
+                <input class="search" x-model="searchString" @input="searchTrades" placeholder="Search..." />
+
+                <div x-show="businessTypeState === 'search'">
+
+                    <button class="btn-small" @click="businessTypeState = 'types'">
+                        ← Back
+                    </button>
+
+                    <div class="flex justify-center flex-wrap">
+                        <template x-for="trade in searchResults" :key="trade">
+                            <div class="trade-option" @click="
+                    form.businessType = trade;
+                    loadServices();
+                    next();
+                " x-text="trade">
+                            </div>
+                        </template>
+                    </div>
+
+                </div>
 
                 <div class="flex flex-wrap trade-types justify-center" x-show="businessTypeState == 'types'">
                     <template x-for="type in tradeTypes" :key="type">
@@ -74,27 +101,27 @@
                         </div>
                     </template>
                 </div>
+
                 <div x-show="businessTypeState === 'trades'">
 
                     <button class="btn-small" @click="businessTypeState = 'types'">
                         ← Back
                     </button>
                     <div class="flex justify-center flex-wrap">
-                    <template x-for="trade in trades[currentTradeType]" :key="trade">
-                        <div class="trade-option" @click="
+                        <template x-for="trade in trades[currentTradeType]" :key="trade">
+                            <div class="trade-option" @click="
                     form.businessType = trade;
                     loadServices();
                     next();
                 " x-text="trade">
-                        </div>
-                    </template>
+                            </div>
+                        </template>
                     </div>
 
                 </div>
 
                 <div class="flex justify-between">
                     <button class="btn" @click="prev()">Back</button>
-                    <button class="btn" @click="next()">Next</button>
                 </div>
             </div>
 
@@ -106,7 +133,7 @@
                     <button class="btn" @click="prev()">Back</button>
                     <button class="btn" @click="next()">Next</button>
                 </div>
-                
+
             </div>
 
             <!-- Step 4 -->
@@ -115,7 +142,7 @@
                 <input type="text" placeholder="Location (Town/City)" x-model="form.location">
                 <input type="number" placeholder="Years in business" x-model="form.years">
                 <input type="text" placeholder="Phone Number" x-model="form.phone">
-                 <div class="flex justify-between">
+                <div class="flex justify-between">
                     <button class="btn" @click="prev()">Back</button>
                     <button class="btn" @click="next()">Next</button>
                 </div>
@@ -128,7 +155,7 @@
                 <p>Please write a brief description and history of your business for the About Us page.</p>
 
                 <textarea class="trade-description" x-model="form.description"></textarea>
-                
+
 
                 <div class="flex justify-between">
                     <button class="btn" @click="prev()">Back</button>
@@ -188,6 +215,29 @@
                     Roofer: ['Roof Repairs', 'Flat Roofing', 'Guttering'],
                     Landscaper: ['Patios', 'Driveways', 'Garden Design'],
                     Other: []
+                },
+
+                searchString: '',
+
+                searchTrades() {
+                    const q = (this.searchString || '').trim().toLowerCase();
+
+                    if (!q) {
+                        this.searchResults = [];
+                        this.businessTypeState = 'types';
+                        return;
+                    }
+
+                    const results = [];
+                    for (const type of this.tradeTypes) {
+                        for (const trade of this.trades[type]) {
+                            if (trade.toLowerCase().includes(q)) results.push(trade);
+                        }
+                    }
+
+                    // optional: remove duplicates (just in case)
+                    this.searchResults = [...new Set(results)];
+                    this.businessTypeState = 'search';
                 },
 
                 amount(plan) {

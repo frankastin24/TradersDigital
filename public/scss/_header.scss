@@ -7,43 +7,47 @@
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.99);
-    z-index:999;
+    z-index: 999;
 
     .header-left {
         .branding {
-            gap:6px;
+            gap: 6px;
             flex-direction: column;
-        .logo {
-            width: 100px;
-        }
 
-        h3 {
-            background:linear-gradient(90deg,rgba(0, 116, 171, 1) 0%, rgba(0, 150, 158, 1) 100%);
-            font-size: 24px;
-            font-weight: normal;
-            margin-top: 4px;
+            .logo {
+                width: 100px;
+            }
 
-            background-clip: text;
-    -webkit-background-clip: text;   /* Required for Chrome/Safari */
+            h3 {
+                background: linear-gradient(90deg, rgba(0, 116, 171, 1) 0%, rgba(0, 150, 158, 1) 100%);
+                font-size: 24px;
+                font-weight: normal;
+                margin-top: 4px;
 
-    color: transparent;
-    -webkit-text-fill-color: transparent; /* Required for Safari */
-            font-weight: 600;
+                background-clip: text;
+                -webkit-background-clip: text;
+                /* Required for Chrome/Safari */
 
-            span {
-                
-                color: $green;
+                color: transparent;
+                -webkit-text-fill-color: transparent;
+                /* Required for Safari */
+                font-weight: 600;
+
+                span {
+
+                    color: $green;
+                }
             }
         }
-    }
-    nav {
-        margin-left:32px;
+
+        nav {
+            margin-left: 32px;
             margin-top: 4px;
-            display:none;
-    }
+            display: none;
+        }
     }
 
-    
+
 
     .navbar {
         height: 80px;
@@ -59,10 +63,10 @@
     }
 
     .nav-links {
-       
+
         gap: 32px;
         color: $primary-color;
-        font-size:18px;
+        font-size: 18px;
 
         .btn-primary,
         .btn-secondary {
@@ -70,20 +74,81 @@
             padding: 10px 20px;
         }
     }
+
     .nav-buttons {
-       gap: 14px;
-      
+        gap: 14px;
+
 
         .btn-primary,
         .btn-secondary {
             border-radius: 40px;
             padding: 10px 20px;
-            font-size:18px;
+            font-size: 18px;
         }
     }
 
     .login {
-        display: none;
+        display: block;
+        position: absolute;
+        top: 88px;
+        padding: 40px 0px;
+        color: #FFF;
+        background: $green;
+        width: 100%;
+
+        .container {
+            width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-bottom:20px;
+        }
+
+        .login-button {
+            display: none;
+            background: #FFF;
+            width: 100%;
+            font-size: 18px;
+            color: $primary-color;
+            padding: 11px 0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+
+            &:before {
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                left: 10px;
+                top: 11px;
+                content: '';
+
+            }
+        }
+
+        .facebook {
+            &:before {
+                background-image: url(../img/facebook.svg);
+
+            }
+        }
+
+        .google {
+            &:before {
+                background-image: url(../img/google.svg);
+
+            }
+        }
+
+        .apple {
+            &:before {
+                background-image: url(../img/apple.svg);
+
+            }
+        }
     }
 
 }
@@ -91,90 +156,93 @@
 @media (min-width:768px) {
 
     #main-header {
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.99);
-    z-index:999;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.99);
+        z-index: 999;
 
-    .header-left {
-        .branding {
-            gap:6px;
-            flex-direction: row;
-        .logo {
-            width: 70px;
-        }
+        .header-left {
+            .branding {
+                gap: 6px;
+                flex-direction: row;
 
-        h3 {
-            background:linear-gradient(90deg,rgba(0, 116, 171, 1) 0%, rgba(0, 150, 158, 1) 100%);
-            font-size: 24px;
-            font-weight: normal;
-            margin-top: 4px;
+                .logo {
+                    width: 70px;
+                }
 
-            background-clip: text;
-    -webkit-background-clip: text;   /* Required for Chrome/Safari */
+                h3 {
+                    background: linear-gradient(90deg, rgba(0, 116, 171, 1) 0%, rgba(0, 150, 158, 1) 100%);
+                    font-size: 24px;
+                    font-weight: normal;
+                    margin-top: 4px;
 
-    color: transparent;
-    -webkit-text-fill-color: transparent; /* Required for Safari */
-            font-weight: 600;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    /* Required for Chrome/Safari */
 
-            span {
-                
-                color: $green;
+                    color: transparent;
+                    -webkit-text-fill-color: transparent;
+                    /* Required for Safari */
+                    font-weight: 600;
+
+                    span {
+
+                        color: $green;
+                    }
+                }
+            }
+
+            nav {
+                margin-left: 32px;
+                margin-top: 4px;
             }
         }
-    }
-    nav {
-        margin-left:32px;
-            margin-top: 4px;
-    }
-    }
 
-    
 
-    .navbar {
-        height: 80px;
-        display: flex;
-        align-items: center;
-        background: #fff;
-        border-bottom: 1px solid #ddd;
-    }
 
-    .navbar .logo {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .nav-links {
-       
-        gap: 32px;
-        color: $primary-color;
-        font-size:18px;
-
-        .btn-primary,
-        .btn-secondary {
-            border-radius: 40px;
-            padding: 10px 20px;
+        .navbar {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
         }
-    }
-    .nav-buttons {
-       gap: 14px;
-      
 
-        .btn-primary,
-        .btn-secondary {
-            border-radius: 40px;
-            padding: 10px 20px;
-            font-size:18px;
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
         }
-    }
 
-    .login {
-        display: none;
-    }
+        .nav-links {
 
-}
+            gap: 32px;
+            color: $primary-color;
+            font-size: 18px;
+
+            .btn-primary,
+            .btn-secondary {
+                border-radius: 40px;
+                padding: 10px 20px;
+            }
+        }
+
+        .nav-buttons {
+            gap: 14px;
+
+
+            .btn-primary,
+            .btn-secondary {
+                border-radius: 40px;
+                padding: 10px 20px;
+                font-size: 18px;
+            }
+        }
+
+        .login {}
+
+    }
 
 }

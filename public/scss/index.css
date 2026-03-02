@@ -218,9 +218,11 @@ footer .footer-contact {
   font-weight: normal;
   margin-top: 4px;
   background-clip: text;
-  -webkit-background-clip: text; /* Required for Chrome/Safari */
+  -webkit-background-clip: text;
+  /* Required for Chrome/Safari */
   color: transparent;
-  -webkit-text-fill-color: transparent; /* Required for Safari */
+  -webkit-text-fill-color: transparent;
+  /* Required for Safari */
   font-weight: 600;
 }
 #main-header .header-left .branding h3 span {
@@ -262,7 +264,50 @@ footer .footer-contact {
   font-size: 18px;
 }
 #main-header .login {
+  display: block;
+  position: absolute;
+  top: 88px;
+  padding: 40px 0px;
+  color: #FFF;
+  background: #00969e;
+  width: 100%;
+}
+#main-header .login .container {
+  width: 600px;
+  margin: auto;
+}
+#main-header .login h1 {
+  margin-bottom: 20px;
+}
+#main-header .login .login-button {
   display: none;
+  background: #FFF;
+  width: 100%;
+  font-size: 18px;
+  color: #0074ab;
+  padding: 11px 0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+#main-header .login .login-button:before {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 11px;
+  content: "";
+}
+#main-header .login .facebook:before {
+  background-image: url(../img/facebook.svg);
+}
+#main-header .login .google:before {
+  background-image: url(../img/google.svg);
+}
+#main-header .login .apple:before {
+  background-image: url(../img/apple.svg);
 }
 
 @media (min-width: 768px) {
@@ -288,9 +333,11 @@ footer .footer-contact {
     font-weight: normal;
     margin-top: 4px;
     background-clip: text;
-    -webkit-background-clip: text; /* Required for Chrome/Safari */
+    -webkit-background-clip: text;
+    /* Required for Chrome/Safari */
     color: transparent;
-    -webkit-text-fill-color: transparent; /* Required for Safari */
+    -webkit-text-fill-color: transparent;
+    /* Required for Safari */
     font-weight: 600;
   }
   #main-header .header-left .branding h3 span {
@@ -330,9 +377,6 @@ footer .footer-contact {
     padding: 10px 20px;
     font-size: 18px;
   }
-  #main-header .login {
-    display: none;
-  }
 }
 .hero {
   background-image: url("/public/img/hero.png");
@@ -360,7 +404,7 @@ footer .footer-contact {
 .hero .hero-content .hero-text p {
   font-size: 40px;
   margin-bottom: 20px;
-  color: #2191c6;
+  color: #50c4fa;
 }
 .hero .hero-content h5 {
   font-size: 16px;
@@ -425,7 +469,7 @@ footer .footer-contact {
     font-size: 20px;
     background: #03585c;
     color: #fff;
-    padding: 20px 30px;
+    padding: 28px 30px;
     border-radius: 40px;
   }
   .hero .hero-content .hero-video iframe {
@@ -660,8 +704,11 @@ footer .footer-contact {
   font-size: 24px;
   margin-bottom: 10px;
 }
-.sign-up .pricing-grid .pricing-card p {
+.sign-up .pricing-grid h4 {
   font-size: 20px;
+}
+.sign-up .pricing-grid .pricing-card p {
+  font-size: 18px;
   margin-bottom: 10px;
 }
 
@@ -687,11 +734,14 @@ footer .footer-contact {
 .card h3 {
   font-size: 40px;
 }
+.card p {
+  margin-bottom: 20px;
+}
 .card {
   max-width: 790px;
-  height: 640px;
+  height: 700px;
   margin: 50px auto;
-  background: #00969e;
+  background: #02767c;
   color: #FFF;
   border-radius: 8px;
   padding: 30px;
@@ -734,12 +784,16 @@ select,
 textarea {
   width: 100%;
   padding: 10px;
-  margin-top: 21px;
+  margin-bottom: 21px;
   padding: 13px 13px;
   font-size: 16px;
   border-radius: 12px;
   border: #FFF;
   color: #00969e;
+}
+
+.trade-description {
+  height: 200px;
 }
 
 .service-tag {
@@ -752,7 +806,41 @@ textarea {
 }
 
 input.search {
-  margin-top: 0px;
+  margin: 0px;
+}
+
+.register-button {
+  display: block;
+  background: #e8f0fe;
+  width: 100%;
+  font-size: 18px;
+  color: #0074ab;
+  padding: 11px 0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.register-button:before {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 11px;
+  content: "";
+}
+
+#register-with-fb:before {
+  background-image: url(../img/facebook.svg);
+}
+
+#register-with-google:before {
+  background-image: url(../img/google.svg);
+}
+
+#register-with-apple:before {
+  background-image: url(../img/apple.svg);
 }
 
 .service-tag.active {
