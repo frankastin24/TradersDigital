@@ -86,7 +86,15 @@ const Trader = global.db.define('trader', {
     registrationComplete :{
         type: global.Sequelize.BOOLEAN,
         default: false
-    }
+    },
+    stripeCustomer : {
+        type: global.Sequelize.STRING,
+        allowNull: true
+    },
+    stripeSubscription : {
+        type: global.Sequelize.STRING,
+        allowNull: true
+    },
 }); 
 
 module.exports = Trader;

@@ -46,13 +46,13 @@
 
         </div>
 
-        <div class="login">
+        <div id="login-form" class="login">
             <div class="container">
             <h1>Login</h1>
             <form method="post" action="/login">
-            <input type="text" placeholder="Email address">
+            <input type="text" placeholder="Email address / Username">
             <input type="password" placeholder="Password">
-            <button type="submit" class="login-button">Login With Email</button>
+            <button type="submit" class="login-button">Login</button>
             </form>
             <button class="login-button facebook">Login With Facebook</button>
             <button class="login-button google">Login With Google</button>
@@ -60,3 +60,25 @@
             </div>
         </div>
     </header>
+
+    <script>
+       const loginButton = document.getElementById('login-btn');
+       
+       const toggleLogin = () => {
+          const loginForm = document.getElementById('login-form');
+
+          if(loginForm.style.display == 'block') {
+            loginForm.style.display = 'none';
+            loginButton.style.background = 'transparent';
+            loginButton.style.color = '#00969e';   
+        } else {
+            loginForm.style.display = 'block';
+           loginButton.style.background = '#00969e'; 
+           loginButton.style.color = '#FFF'; 
+          }
+       }
+
+       loginButton.addEventListener('click', toggleLogin)
+       
+
+    </script>

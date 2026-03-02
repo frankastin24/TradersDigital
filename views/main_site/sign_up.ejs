@@ -15,7 +15,7 @@
             <input x-model="form.billing" type="radio" id="monthly" value="monthly" name="billing">
             <label for="monthly">Monthly</label>
 
-            <input x-model="form.billing" type="radio" id="annually" value="annual" name="billing">
+            <input x-model="form.billing" type="radio" id="annually" value="annually" name="billing">
             <label for="annually">Annually (save 25%)</label>
         </div>
 
@@ -42,6 +42,14 @@
         <div class="card">
 
             <!-- Progress Bar -->
+            <div class="step-names flex">
+                <p>Account</p>
+                <p>Trade</p>
+                <p>Name</p>
+                <p>Details</p>
+                <p>About</p>
+
+            </div>
             <div class="progress">
                 <template x-for="i in 5">
                     <div :class="step >= i ? 'active' : ''"></div>
@@ -63,7 +71,8 @@
                 <button class="register-button" id="register-with-fb">Continue With Facebook</button>
                 <button class="register-button" id="register-with-google">Continue With Google</button>
                 <button class="register-button" id="register-with-apple">Continue With Apple</button>
-
+                
+                <button class="register-button" @click="next()">No Email Address?</button>
                 
             </div>
 
@@ -177,11 +186,11 @@
 
                 packages: {
                     basic: {
-                        annual: 19,
+                        annually: 19,
                         monthly: 25
                     },
                     professional: {
-                        annual: 49,
+                        annually: 49,
                         monthly: 65
                     }
                 },
@@ -195,7 +204,7 @@
                     years: '',
                     phone: '',
                     description: '',
-                    billing: 'annual',
+                    billing: 'annually',
                     package: 'professional'
                 },
 
@@ -278,9 +287,13 @@
                 },
 
                 submit() {
+
+                    window.location = '/payment/'+ this.form.package +'/' + this.form.billing;
+                    
+                    return;
+
                     const payload = {
                         ...this.form,
-                        services: this.selectedServices
                     };
 
                     console.log("Submitting:", payload);

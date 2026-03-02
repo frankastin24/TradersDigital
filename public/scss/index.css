@@ -82,6 +82,23 @@ button {
 
 /* HERO */
 /* TRUST BAR */
+.payment h1 {
+  margin-top: 140px;
+  text-align: center;
+}
+.payment a {
+  padding: 10px 20px;
+  text-align: center;
+  display: block;
+  width: 300px;
+  margin: auto;
+  height: auto;
+  margin: 20px auto;
+}
+.payment #checkout {
+  margin-top: 40px;
+}
+
 /* SIGNUP FORM */
 .signup {
   padding: 60px 0;
@@ -264,7 +281,7 @@ footer .footer-contact {
   font-size: 18px;
 }
 #main-header .login {
-  display: block;
+  display: none;
   position: absolute;
   top: 88px;
   padding: 40px 0px;
@@ -280,7 +297,7 @@ footer .footer-contact {
   margin-bottom: 20px;
 }
 #main-header .login .login-button {
-  display: none;
+  display: block;
   background: #FFF;
   width: 100%;
   font-size: 18px;
@@ -685,7 +702,7 @@ footer .footer-contact {
 }
 .sign-up .pricing-grid .pricing-card {
   position: relative;
-  height: 190px;
+  height: 230px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -702,7 +719,7 @@ footer .footer-contact {
 }
 .sign-up .pricing-grid .pricing-card h3 {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .sign-up .pricing-grid h4 {
   font-size: 20px;
@@ -763,6 +780,12 @@ footer .footer-contact {
   font-size: 17px;
 }
 
+.step-names p {
+  font-size: 12px;
+  width: 20%;
+  margin-bottom: 6px;
+}
+
 .progress {
   display: flex;
   margin-bottom: 20px;
@@ -811,7 +834,7 @@ input.search {
 
 .register-button {
   display: block;
-  background: #e8f0fe;
+  background: #FFF;
   width: 100%;
   font-size: 18px;
   color: #0074ab;

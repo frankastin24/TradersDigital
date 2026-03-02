@@ -1,0 +1,42 @@
+<%- getTemplatePart('main_site/header-payment') %>
+<div class="payment">
+    <h1>Enter Payment Details</h1>
+
+   
+   <div id="checkout"></div>
+   
+    <% if (context.request.interval == 'annually') { %>
+        
+        <h3>Selected Annual Subscription By Accident?</h3>
+
+        <a href="/payment/<%= context.request.plan %>/monthly" class="btn-primary">Click here to change to monthly.</a>
+            
+   <% } %>
+    
+</div>
+
+
+<script>
+
+const stripe = Stripe("pk_test_51T6RncPuXCZnYldcEr1FzPjugf3dmVIfsRO47msuYvAXfQxN7b2sEZK3Lj476UGTn78dOqrUSoQXsTFTMnxxeQox00vPT2IEcX");
+
+initialize();
+
+// Create a Checkout Session
+async function initialize() {
+  const fetchClientSecret = async () => {
+    const response = await fetch("/client-secret?plan=<%= context.request.plan %>&interval=<%= context.request.interval %>", {
+      method: "POST",
+    });
+    const { clientSecret } = await response.json();
+    return clientSecret;
+  };
+
+  const checkout = await stripe.initEmbeddedCheckout({
+    fetchClientSecret,
+  });
+
+  // Mount Checkout
+  checkout.mount('#checkout');
+}
+</script>

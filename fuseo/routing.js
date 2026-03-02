@@ -37,8 +37,8 @@ class Router {
      * @param {object} res - Express-like response object
      */
     static async execute(context) {
-        
         let reqPath = context.req.path;
+        console.log('[router] incoming', context.req.method, reqPath);
         
         if (reqPath.endsWith('/') && reqPath.length > 1) reqPath = reqPath.slice(0, -1);
         
@@ -69,6 +69,9 @@ class Router {
             }
         }
 
+        console.log('[router] matched route:', matched ? matched.route : null);
+        console.log('[router] routeVariables:', routeVariables);
+
         // Fallback: direct match with no variables
         if (!matched) {
             matched = routes.find(r => r.route === reqPath);
@@ -80,34 +83,60 @@ class Router {
 
         // Build request data
         const request = { ...routeVariables, ...context.req.body, ...context.req.query };
-
-        // Parse callable
-       
+       context.request = request;
         // Execute controller method (support async)
         try {
-
             let result;
-            
+
+            // If a function was registered directly (e.g. TradersDigital.payment)
             if (typeof matched.callable === 'function') {
-               
-                result = await matched.callable(request,context);
-            } else if (Controller.prototype && typeof Controller.prototype[methodName] === 'function') {
-                const instance = new Controller();
-                result = await instance[methodName](request, context);
+                result = await matched.callable(request, context);
+
+            // If a string like "Controller.method" was registered, resolve it
+            } else if (typeof matched.callable === 'string') {
+                const parts = matched.callable.split('.');
+                if (parts.length !== 2) {
+                    return context.res.status(500).json({ error: 'Invalid callable format' });
+                }
+                const [className, methodName] = parts;
+                // Try requiring from the controllers folder
+                const controllerPath = path.join(process.cwd(), 'controllers', `${className}.js`);
+                let Controller;
+                try {
+                    Controller = require(controllerPath);
+                } catch (e) {
+                    return context.res.status(500).json({ error: `Controller file not found: ${controllerPath}` });
+                }
+
+                // Support static method
+                if (typeof Controller[methodName] === 'function') {
+                    result = await Controller[methodName](request, context);
+
+                // Support instance method
+                } else if (Controller.prototype && typeof Controller.prototype[methodName] === 'function') {
+                    const instance = new Controller();
+                    result = await instance[methodName](request, context);
+                } else {
+                    return context.res.status(500).json({ error: `Method "${methodName}" not found in "${className}"` });
+                }
+
             } else {
-                return res.status(500).json({ error: `Method "${methodName}" not found in "${className}"` });
+                return context.res.status(500).json({ error: 'Unsupported callable type' });
             }
 
-            // Only send response if not already sent by controller
-            // if (!res.headersSent) {
-            //     if (Array.isArray(result) || typeof result === 'object') {
-            //         return res.json(result);
-            //     } else {
-            //         return res.send(result);
-            //     }
-            // }
+            // If controller returned something and response not yet sent, send it
+            if (!context.res.headersSent && typeof result !== 'undefined') {
+                if (Array.isArray(result) || (result && typeof result === 'object')) {
+                    return context.res.json(result);
+                } else {
+                    return context.res.send(result);
+                }
+            }
+
+            // If controller handled the response itself, just return
+            return;
         } catch (err) {
-            console.log(err)
+            console.log(err);
             return context.res.status(500).json({ error: err.message || 'Controller execution failed' });
         }
     }

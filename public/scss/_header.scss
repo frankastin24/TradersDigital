@@ -88,7 +88,7 @@
     }
 
     .login {
-        display: block;
+        display: none;
         position: absolute;
         top: 88px;
         padding: 40px 0px;
@@ -106,7 +106,7 @@
         }
 
         .login-button {
-            display: none;
+            display: block;
             background: #FFF;
             width: 100%;
             font-size: 18px;

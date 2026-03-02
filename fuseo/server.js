@@ -49,15 +49,14 @@ const multerMiddleWare = (req,res,next) => {
  
 }
 
-//Redirect all requests to router
-
+// Redirect all requests to router
 app.all('/{*any}', multerMiddleWare, async (req, res) => {
   const context = {
     req,
     res,
   }
-  
-  router.execute(context);
+
+  await router.execute(context);
 });
 
 //Start server
