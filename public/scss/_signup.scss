@@ -10,7 +10,7 @@
         font-size:40px;
     }
 }
-.sign-up {
+#sign-up {
     padding-top:40px;
     text-align: center;
     h2 {
@@ -91,12 +91,20 @@ margin-top:40px;
 
 }
 .card {
+    h2 {
+        text-align: center;
+        margin-bottom:20px;
+    }
     h3 {
         font-size: 40px;
+ text-align: center;
+        margin-bottom:10px;
     }
+
     p {
         margin-bottom:20px;
     }
+
     max-width: 790px;
     height:700px;
     margin: 50px auto;
@@ -130,6 +138,7 @@ margin-top:40px;
     }
 
 }
+
 .progress {
     display: flex;
     margin-bottom: 20px;
@@ -146,7 +155,10 @@ margin-top:40px;
     background: #06d2dd;
 }
 
-input,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
 select,
 textarea {
     width: 100%;
@@ -158,9 +170,11 @@ textarea {
     border: #FFF;
     color:$green;
 }
+
 .trade-description {
     height:200px;
 }
+
 .service-tag {
     display: inline-block;
     padding: 5px 10px;
@@ -169,6 +183,7 @@ textarea {
     border-radius: 20px;
     cursor: pointer;
 }
+
 input.search {
     margin:0px;
 }
@@ -222,11 +237,15 @@ input.search {
    margin-top:20px;
 }
 .btn-small {
-     background:#FFF;
+        background: #FFF;
     border-radius: 10px;
-    padding:5px 10px;
-    color:$green;
-    margin-bottom:20px;
+    padding: 8px 10px;
+    color: #00969e;
+    margin: auto;
+    display: block;
+    width: 70px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 
 }
 .trade-option {

@@ -58,12 +58,12 @@ class TradersDigital {
 
     }
 
-    static return(request,context) {
-        const currentTrader = TradersDigital.findOne({
-            where : {
-                id : context.session.userId
-            }
-        });
+    static async return(request,context) {
+        // const currentTrader = TradersDigital.findOne({
+        //     where : {
+        //         id : context.session.userId
+        //     }
+        // });
 
         const session = await stripe.checkout.sessions.retrieve(request.session_id, {
       expand: ['subscription', 'customer'],
@@ -73,11 +73,16 @@ class TradersDigital {
       ? session.subscription
       : null;
 
-      if(session.status === 'complete' && subscription && (subscription.status === 'trialing' || subscription.status === 'active') {
+      if(session.status === 'complete' && subscription && (subscription.status === 'trialing' || subscription.status === 'active')) {
+        
+        //currentTrader.trailEnds = session.trail_end_date;
+        console.log(session);
+        
+        return view('/dash',{},context);
 
       } else {
         
-        return view('main_site/payment', {error : 'Error with payment'},context );
+        return view('main_site/payment', {error : 'Error with payment'}, context );
 
       }
     }
