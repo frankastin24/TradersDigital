@@ -1,0 +1,135 @@
+{
+  "Construction & Building Trades": [
+    "Builder",
+    "Bricklayer",
+    "Stonemason",
+    "Groundworker",
+    "Demolition Contractor",
+    "Scaffolder",
+    "Steel Erector",
+    "Concrete Specialist",
+    "Cladder",
+    "Shopfitter",
+    "Property Developer",
+    "Loft Conversion Specialist",
+    "Basement Conversion Specialist"
+  ],
+  "Plumbing & Heating": [
+    "Plumber",
+    "Heating Engineer",
+    "Gas Engineer",
+    "Boiler Installer",
+    "Boiler Repair Specialist",
+    "Drainage Engineer",
+    "Drain Unblocking Specialist",
+    "Bathroom Installer",
+    "Wet Room Specialist",
+    "Underfloor Heating Installer",
+    "Oil Heating Engineer"
+  ],
+  "Electrical": [
+    "Electrician (Domestic)",
+    "Electrician (Commercial)",
+    "Electrical Contractor",
+    "EV Charger Installer",
+    "Solar Panel Installer",
+    "CCTV Installer",
+    "Fire Alarm Installer",
+    "Security System Installer",
+    "Smart Home Installer",
+    "PAT Testing Engineer",
+    "Data Cabling Engineer"
+  ],
+  "Carpentry & Joinery": [
+    "Carpenter",
+    "Joiner",
+    "Kitchen Fitter",
+    "Cabinet Maker",
+    "Staircase Specialist",
+    "Shopfitting Joiner",
+    "Timber Frame Specialist"
+  ],
+  "Roofing & Exteriors": [
+    "Roofer",
+    "Flat Roofing Specialist",
+    "Leadwork Specialist",
+    "Guttering Specialist",
+    "Fascia & Soffit Installer",
+    "Chimney Specialist",
+    "Thatched Roof Specialist",
+    "Cladding Installer"
+  ],
+  "Finishing Trades": [
+    "Plasterer",
+    "Renderer",
+    "Dry Liner",
+    "Screeder",
+    "Tiler (Wall & Floor)",
+    "Floor Layer",
+    "Vinyl Floor Installer",
+    "Carpet Fitter",
+    "Painter & Decorator",
+    "Wallpaper Specialist"
+  ],
+  "Landscaping & Outdoor": [
+    "Landscaper",
+    "Gardener",
+    "Tree Surgeon",
+    "Arborist",
+    "Fencing Contractor",
+    "Decking Installer",
+    "Driveway Installer",
+    "Paving Specialist",
+    "Artificial Grass Installer",
+    "Grounds Maintenance Contractor"
+  ],
+  "HVAC & Specialist Systems": [
+    "HVAC Engineer",
+    "Air Conditioning Installer",
+    "Ventilation Specialist",
+    "Refrigeration Engineer",
+    "Commercial Kitchen Installer",
+    "Ductwork Installer"
+  ],
+  "Windows, Doors & Glazing": [
+    "Double Glazing Installer",
+    "Window Fitter",
+    "Door Installer",
+    "Conservatory Installer",
+    "Glazier",
+    "Locksmith"
+  ],
+  "Cleaning & Maintenance Trades": [
+    "Pressure Washing Contractor",
+    "Gutter Cleaning Specialist",
+    "Property Maintenance Contractor",
+    "Handyman",
+    "Facilities Maintenance",
+    "Pest Control Technician"
+  ],
+  "Specialist & Compliance": [
+    "Fire Door Installer",
+    "Asbestos Removal Contractor",
+    "Damp Proofing Specialist",
+    "Timber Treatment Specialist",
+    "Insulation Installer",
+    "Energy Assessor",
+    "Building Surveyor",
+    "Party Wall Surveyor"
+  ],
+  "Infrastructure & Utilities": [
+    "Civil Engineering Contractor",
+    "Utility Contractor",
+    "Fibre Broadband Installer",
+    "Street Lighting Contractor",
+    "Traffic Management Contractor"
+  ],
+  "Commercial & Industrial Trades": [
+    "Industrial Electrician",
+    "Industrial Plumber",
+    "Mechanical Fitter",
+    "Pipefitter",
+    "Welder",
+    "Fabricator"
+  ]
+}

@@ -22,8 +22,8 @@ app.use(express.json());
 
 //Setup Sessions
 const store = new SequelizeStore({
-    db: global.npdb,
-  })
+    db: global.db,
+})
 
 store.sync();
 app.use(session({
@@ -54,6 +54,7 @@ app.all('/{*any}', multerMiddleWare, async (req, res) => {
   const context = {
     req,
     res,
+    session: req.session
   }
 
   await router.execute(context);

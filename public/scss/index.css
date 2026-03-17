@@ -423,6 +423,13 @@ footer .footer-contact {
   margin-bottom: 20px;
   color: #50c4fa;
 }
+.hero .hero-content h4 {
+  font-weight: 500;
+  color: #FFF;
+  font-size: 17px;
+  margin-top: 30px;
+  line-height: 36px;
+}
 .hero .hero-content h5 {
   font-size: 16px;
   margin-bottom: 20px;
@@ -762,7 +769,7 @@ footer .footer-contact {
 }
 .card {
   max-width: 790px;
-  height: 700px;
+  height: 460px;
   margin: 50px auto;
   background: #02767c;
   color: #FFF;

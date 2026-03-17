@@ -1,8 +1,8 @@
-<%- getTemplatePart('main_site/header-payment') %>
+<%- getTemplatePart('main_site/header-secondary', viewContext) %>
 <div class="payment">
-    <h1>Enter Payment Details</h1>
 
-   
+   <h1>Enter Payment Details</h1>
+
    <div id="checkout"></div>
    
     <% if (context.request.interval == 'annually') { %>

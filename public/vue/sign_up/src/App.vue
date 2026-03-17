@@ -1,6 +1,5 @@
 <template>
-    <Interval />
-    <Package />
+  
     <Form />
 
 </template>

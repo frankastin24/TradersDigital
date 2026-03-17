@@ -1,0 +1,64 @@
+<section id="hero">
+
+    <h1>Reliable Local Electrician in <%= Town %></h1>
+    
+    <p>Fully qualified electrician providing fast, reliable electrical services for homes and businesses.</p>
+    
+    <button class="btn">Request A Quote</button>
+    <button class="btn">Call Now</button>
+    <div class="flex trust-badges">
+
+    <% if (niceic) { %>
+
+    <img src="<%= imgDir %>/niceic-registered.png"/>
+
+    <% } %>
+
+    <% if (twentyFourSeven) { %>
+
+    <img src="<%= imgDir %>/twentyfourseven.png"/>
+
+    <% } %>
+
+    <img src="<%= imgDir %>/fully-insured.png" />
+
+    </div>
+
+
+</section>
+
+<section id="home-services">
+    
+    <h1>Services</h1>
+
+    <div class="services">
+    <% for(service of services) { 
+            if(service.featured) {
+    %>
+        <div class="service">
+            <img src="<%= service.icon %>"/>
+            <h2><%= service.title %></h2>
+            <p><%= service.description %></p>
+        </div>  
+
+    <% } } %>
+    
+    </div> 
+    
+    <a href="/services">View All Services</a>
+            
+
+
+</section> 
+
+<section id="home-emergency">
+
+    <h1>Electrical Emergency?</h1>
+    
+    <h2>Call Our 24 Electrician Now</h2>
+
+    <a href="tel:<%= phoneNumber %>">Call Now <%= phoneNumber %></a>
+    
+</section>
+
+<section id="home-why-choose-us"></section>

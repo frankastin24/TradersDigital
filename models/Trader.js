@@ -1,97 +1,118 @@
+const Sequelize = require('sequelize')
 const Trader = global.db.define('trader', {
+
     id: {
-        type: global.Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
 
     email: {
-        type: global.Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true
     },
 
     password: {
-        type: global.Sequelize.STRING,
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+
+    package : {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    
+    billing : {
+        type: Sequelize.STRING,
         allowNull: false
     },
 
     regComplete: {
-        type: global.Sequelize.BOOLEAN,
-        allowNull: false
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        default: false
     },
 
     facebookId: {
-        type: global.Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull:true
     },
 
     googleId: {
-        type: global.Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull:true
     },
 
     appleId: {
-        type: global.Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull:true
     },
 
     businessName: {
-        type: global.Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING,
+          allowNull: true
     },
 
     trade: {
-        type: global.Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING,
+          allowNull: true
     },
 
     phoneNumber: {
-        type: global.Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: true
     },
 
     city: {
-        type: global.Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: true
     },
 
     county: {
-        type: global.Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: true
     },
     
-    about: {
-        type: global.Sequelize.TEXT,
+    experience : {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    areas : {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    services : {
+        type: Sequelize.STRING,
         allowNull: true
     },
 
     trailEndsAt : {
-        type: global.Sequelize.DATE,
+        type: Sequelize.DATE,
         allowNull: true
     },
 
     totalPaymentsAmount : {
-        type: global.Sequelize.FLOAT,
+        type: Sequelize.FLOAT,
         allowNull: true
     },
     lastPaymentMade : {
-        type: global.Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN,
         allowNull: true,
         default:false
     },
     todoList : {
-        type: global.Sequelize.TEXT,
+        type: Sequelize.TEXT,
         default: '["template","domain","services","base"]',
     },
     stripeCustomer : {
-        type: global.Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: true
     },
     stripeSubscription : {
-        type: global.Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: true
     },
 }); 
-
+global.db.sync();
 module.exports = Trader;

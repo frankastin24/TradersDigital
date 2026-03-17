@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <title>{{businessName}} - {{trade}} - {{city}}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/public/scss/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/public/img/favicon.png">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header id="main-header">
+        <div class="container flex justify-between items-center">
+            <div class="header-left flex items-center">
+                
+                <a class="branding flex justify-center items-center" href="/">
+                    
+                    <% if(logo) { %>
+                        <img width="100" src="<%= logo %>"/>
+                    <% } else { %>
+                        <h3><%= businessName %></h3>
+                    <% } %>
+
+                </a>
+            </div>
+
+            <div class="header-right">
+
+                <nav id="main-nav">
+                    <a href="/about-us">About Us</a>
+                    <a href="/services">Services</a>
+                    <a href="/book-now">Book Now</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+
+                <nav class="nav-buttons flex items-center">
+
+                    <button id="login-btn" class="btn-secondary">Login</button>
+                    <a href="/sign-up" class="btn-primary">Start For Free</a>
+
+                </nav>
+                
+            </div>
+
+
+
+
+        </div>
+
+        <div id="login-form" class="login">
+            <div class="container">
+            <h1>Login</h1>
+            <form method="post" action="/login">
+            <input type="text" placeholder="Email address / Username">
+            <input type="password" placeholder="Password">
+            <button type="submit" class="login-button">Login</button>
+            </form>
+            <button class="login-button facebook">Login With Facebook</button>
+            <button class="login-button google">Login With Google</button>
+            <button class="login-button apple">Login With Apple</button>
+            
+            <div class="flex">
+            <input type="checkbox" name="stay_logged_in"/>
+            <p>Stay Logged In On This Device</p>
+            </div>
+
+            </div>
+        </div>
+    </header>
+
+    <script>
+       const loginButton = document.getElementById('login-btn');
+       
+       const toggleLogin = () => {
+          const loginForm = document.getElementById('login-form');
+
+          if(loginForm.style.display == 'block') {
+            loginForm.style.display = 'none';
+            loginButton.style.background = 'transparent';
+            loginButton.style.color = '#00969e';   
+        } else {
+            loginForm.style.display = 'block';
+           loginButton.style.background = '#00969e'; 
+           loginButton.style.color = '#FFF'; 
+          }
+       }
+
+       loginButton.addEventListener('click', toggleLogin)
+       
+
+    </script>

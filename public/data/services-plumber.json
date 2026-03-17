@@ -1,0 +1,228 @@
+{
+  "trade": "plumber",
+  "currency": "GBP",
+  "service_categories": [
+    {
+      "category": "Installations",
+      "services": [
+        {
+          "service": "Install kitchen tap",
+          "estimated_time": "30-60 minutes",
+          "price_min": 60,
+          "price_max": 120
+        },
+        {
+          "service": "Install bathroom tap",
+          "estimated_time": "1-2 hours",
+          "price_min": 80,
+          "price_max": 160
+        },
+        {
+          "service": "Install toilet",
+          "estimated_time": "1-2 hours",
+          "price_min": 120,
+          "price_max": 250
+        },
+        {
+          "service": "Install basin sink",
+          "estimated_time": "1-3 hours",
+          "price_min": 120,
+          "price_max": 300
+        },
+        {
+          "service": "Install kitchen sink",
+          "estimated_time": "2-4 hours",
+          "price_min": 150,
+          "price_max": 350
+        },
+        {
+          "service": "Install shower mixer",
+          "estimated_time": "2-4 hours",
+          "price_min": 150,
+          "price_max": 400
+        },
+        {
+          "service": "Install bath",
+          "estimated_time": "4-6 hours",
+          "price_min": 300,
+          "price_max": 700
+        },
+        {
+          "service": "Install radiator",
+          "estimated_time": "2-4 hours",
+          "price_min": 150,
+          "price_max": 350
+        },
+        {
+          "service": "Install washing machine",
+          "estimated_time": "30-60 minutes",
+          "price_min": 50,
+          "price_max": 120
+        },
+        {
+          "service": "Install dishwasher",
+          "estimated_time": "30-60 minutes",
+          "price_min": 60,
+          "price_max": 130
+        }
+      ]
+    },
+    {
+      "category": "Repairs",
+      "services": [
+        {
+          "service": "Fix leaking tap",
+          "estimated_time": "30-60 minutes",
+          "price_min": 60,
+          "price_max": 120
+        },
+        {
+          "service": "Repair leaking pipe",
+          "estimated_time": "1-2 hours",
+          "price_min": 80,
+          "price_max": 200
+        },
+        {
+          "service": "Fix running toilet",
+          "estimated_time": "30-60 minutes",
+          "price_min": 70,
+          "price_max": 150
+        },
+        {
+          "service": "Repair radiator leak",
+          "estimated_time": "1-2 hours",
+          "price_min": 80,
+          "price_max": 200
+        },
+        {
+          "service": "Replace radiator valve",
+          "estimated_time": "1-2 hours",
+          "price_min": 90,
+          "price_max": 180
+        },
+        {
+          "service": "Repair shower pressure issue",
+          "estimated_time": "1-3 hours",
+          "price_min": 100,
+          "price_max": 250
+        }
+      ]
+    },
+    {
+      "category": "Drainage",
+      "services": [
+        {
+          "service": "Unblock sink",
+          "estimated_time": "30-90 minutes",
+          "price_min": 70,
+          "price_max": 150
+        },
+        {
+          "service": "Unblock toilet",
+          "estimated_time": "30-90 minutes",
+          "price_min": 80,
+          "price_max": 160
+        },
+        {
+          "service": "Unblock shower drain",
+          "estimated_time": "30-60 minutes",
+          "price_min": 70,
+          "price_max": 140
+        },
+        {
+          "service": "Drain jetting",
+          "estimated_time": "1-2 hours",
+          "price_min": 120,
+          "price_max": 300
+        }
+      ]
+    },
+    {
+      "category": "Boilers and Heating",
+      "services": [
+        {
+          "service": "Boiler installation",
+          "estimated_time": "1-2 days",
+          "price_min": 1800,
+          "price_max": 3500
+        },
+        {
+          "service": "Boiler repair",
+          "estimated_time": "1-4 hours",
+          "price_min": 120,
+          "price_max": 400
+        },
+        {
+          "service": "Boiler service",
+          "estimated_time": "1 hour",
+          "price_min": 70,
+          "price_max": 120
+        },
+        {
+          "service": "Power flush heating system",
+          "estimated_time": "4-8 hours",
+          "price_min": 350,
+          "price_max": 700
+        },
+        {
+          "service": "Install smart thermostat",
+          "estimated_time": "1-2 hours",
+          "price_min": 120,
+          "price_max": 250
+        }
+      ]
+    },
+    {
+      "category": "Large Jobs",
+      "services": [
+        {
+          "service": "Full bathroom installation",
+          "estimated_time": "3-7 days",
+          "price_min": 2500,
+          "price_max": 8000
+        },
+        {
+          "service": "Replace hot water cylinder",
+          "estimated_time": "3-6 hours",
+          "price_min": 500,
+          "price_max": 1500
+        },
+        {
+          "service": "Install water softener",
+          "estimated_time": "2-4 hours",
+          "price_min": 250,
+          "price_max": 600
+        },
+        {
+          "service": "Replace main water supply pipe",
+          "estimated_time": "1-2 days",
+          "price_min": 800,
+          "price_max": 2500
+        }
+      ]
+    },
+    {
+      "category": "Emergency",
+      "services": [
+        {
+          "service": "Emergency plumbing call-out",
+          "estimated_time": "1-2 hours",
+          "price_min": 120,
+          "price_max": 250
+        },
+        {
+          "service": "Burst pipe repair",
+          "estimated_time": "1-4 hours",
+          "price_min": 150,
+          "price_max": 400
+        },
+        {
+          "service": "Major leak repair",
+          "estimated_time": "1-4 hours",
+          "price_min": 150,
+          "price_max": 400
+        }
+      ]
+    }
+  ]
+}

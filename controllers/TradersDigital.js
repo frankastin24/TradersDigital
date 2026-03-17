@@ -1,17 +1,33 @@
 const { view } = require('../fuseo/view.js');
+
 const Stripe = require('stripe')
-console.log(global.__env.STRIPE_SECRET_KEY)
+
 const stripe = new Stripe(global.__env.STRIPE_SECRET_KEY);
+
 class TradersDigital {
 
     static home(request, context) {
         return view('main_site/home', {}, context);
     }
+
     static signup(request, context) {
-        return view('main_site/sign_up', {}, context);
+        return view('main_site/sign_up', {pageTitle:'Sign Up - Tradeely'}, context);
     }
+
     static payment(request, context) {
-        return view('main_site/payment', {}, context);
+        return view('main_site/payment', {pageTitle:'Payment - Tradeely'}, context);
+    }
+
+    static buildSite(request, context) {
+        return view('main_site/website_loader', {pageTitle:'Creating Your Website - Tradeely'}, context);
+    }
+
+    static async super(request,context) {
+
+        const Trader = require('../models/Trader.js');
+        const traders = await Trader.findAll();
+        
+        return view('/super_admin/index', {traders},context);
     }
 
     static async clientSecret(request, context) {
@@ -76,7 +92,6 @@ class TradersDigital {
       if(session.status === 'complete' && subscription && (subscription.status === 'trialing' || subscription.status === 'active')) {
         
         //currentTrader.trailEnds = session.trail_end_date;
-        console.log(session);
         
         return view('/dash',{},context);
 

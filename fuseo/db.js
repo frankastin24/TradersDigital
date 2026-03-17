@@ -15,7 +15,7 @@ const initializeDB = async () => {
 
   try {
     await sequelize.authenticate();
-    global.npdb = sequelize;
+    global.db = sequelize;
     console.log('Database connection has been established successfully.');
     
   } catch (error) {

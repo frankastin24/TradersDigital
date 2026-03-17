@@ -1,5 +1,5 @@
 <template>
-  <div v-if="store.step === 2">
+  <div v-if="store.step === 3">
     <h3>Select Trade</h3>
 
     <input
@@ -7,7 +7,7 @@
       type="text"
       v-model="searchString"
       @input="search"
-      placeholder="Search..."
+      placeholder="Search for your trade..."
     />
 
     <!-- SEARCH RESULTS -->
@@ -26,25 +26,14 @@
       </div>
     </div>
 
-    <!-- TYPES -->
-    <div v-else-if="businessTypeState === 'types'" class="flex flex-wrap trade-types justify-center">
-      <div
-        v-for="type in tradeTypes"
-        :key="type"
-        class="trade-option"
-        @click="selectTradeType(type)"
-      >
-        {{ type }}
-      </div>
-    </div>
+   
 
     <!-- TRADES IN A TYPE -->
     <div v-else-if="businessTypeState === 'trades'">
-      <button class="btn-small" @click="backToTypes">← Back</button>
-
+      
       <div class="flex justify-center flex-wrap">
         <div
-          v-for="trade in currentTrades"
+          v-for="trade in popularTrades"
           :key="trade"
           class="trade-option"
           @click="selectTrade(trade)"
@@ -61,15 +50,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useAppStore } from "../../store/store";
 
 const store = useAppStore();
 
-const businessTypeState = ref("types"); // 'types' | 'trades' | 'search'
+const businessTypeState = ref("trades"); // 'types' | 'trades' | 'search'
 const searchString = ref("");
 const currentTrades = ref([]);
 const searchResults = ref([]);
+const trades = ref({});
+
+const popularTrades = [
+  "Builder",
+  "Plumber",
+  "Electrician (Domestic)",
+  "Carpenter",
+]
 
 const tradeTypes = [
   "Construction & Building Trades",
@@ -87,148 +84,20 @@ const tradeTypes = [
   "Commercial & Industrial Trades"
 ];
 
-const trades = {
-  "Construction & Building Trades": [
-    "Builder",
-    "Bricklayer",
-    "Stonemason",
-    "Groundworker",
-    "Demolition Contractor",
-    "Scaffolder",
-    "Steel Erector",
-    "Concrete Specialist",
-    "Cladder",
-    "Shopfitter",
-    "Property Developer",
-    "Loft Conversion Specialist",
-    "Basement Conversion Specialist"
-  ],
-  "Plumbing & Heating": [
-    "Plumber",
-    "Heating Engineer",
-    "Gas Engineer",
-    "Boiler Installer",
-    "Boiler Repair Specialist",
-    "Drainage Engineer",
-    "Drain Unblocking Specialist",
-    "Bathroom Installer",
-    "Wet Room Specialist",
-    "Underfloor Heating Installer",
-    "Oil Heating Engineer"
-  ],
-  "Electrical": [
-    "Electrician (Domestic)",
-    "Electrician (Commercial)",
-    "Electrical Contractor",
-    "EV Charger Installer",
-    "Solar Panel Installer",
-    "CCTV Installer",
-    "Fire Alarm Installer",
-    "Security System Installer",
-    "Smart Home Installer",
-    "PAT Testing Engineer",
-    "Data Cabling Engineer"
-  ],
-  "Carpentry & Joinery": [
-    "Carpenter",
-    "Joiner",
-    "Kitchen Fitter",
-    "Cabinet Maker",
-    "Staircase Specialist",
-    "Shopfitting Joiner",
-    "Timber Frame Specialist"
-  ],
-  "Roofing & Exteriors": [
-    "Roofer",
-    "Flat Roofing Specialist",
-    "Leadwork Specialist",
-    "Guttering Specialist",
-    "Fascia & Soffit Installer",
-    "Chimney Specialist",
-    "Thatched Roof Specialist",
-    "Cladding Installer"
-  ],
-  "Finishing Trades": [
-    "Plasterer",
-    "Renderer",
-    "Dry Liner",
-    "Screeder",
-    "Tiler (Wall & Floor)",
-    "Floor Layer",
-    "Vinyl Floor Installer",
-    "Carpet Fitter",
-    "Painter & Decorator",
-    "Wallpaper Specialist"
-  ],
-  "Landscaping & Outdoor": [
-    "Landscaper",
-    "Gardener",
-    "Tree Surgeon",
-    "Arborist",
-    "Fencing Contractor",
-    "Decking Installer",
-    "Driveway Installer",
-    "Paving Specialist",
-    "Artificial Grass Installer",
-    "Grounds Maintenance Contractor"
-  ],
-  "HVAC & Specialist Systems": [
-    "HVAC Engineer",
-    "Air Conditioning Installer",
-    "Ventilation Specialist",
-    "Refrigeration Engineer",
-    "Commercial Kitchen Installer",
-    "Ductwork Installer"
-  ],
-  "Windows, Doors & Glazing": [
-    "Double Glazing Installer",
-    "Window Fitter",
-    "Door Installer",
-    "Conservatory Installer",
-    "Glazier",
-    "Locksmith"
-  ],
-  "Cleaning & Maintenance Trades": [
-    "Pressure Washing Contractor",
-    "Gutter Cleaning Specialist",
-    "Property Maintenance Contractor",
-    "Handyman",
-    "Facilities Maintenance",
-    "Pest Control Technician"
-  ],
-  "Specialist & Compliance": [
-    "Fire Door Installer",
-    "Asbestos Removal Contractor",
-    "Damp Proofing Specialist",
-    "Timber Treatment Specialist",
-    "Insulation Installer",
-    "Energy Assessor",
-    "Building Surveyor",
-    "Party Wall Surveyor"
-  ],
-  "Infrastructure & Utilities": [
-    "Civil Engineering Contractor",
-    "Utility Contractor",
-    "Fibre Broadband Installer",
-    "Street Lighting Contractor",
-    "Traffic Management Contractor"
-  ],
-  "Commercial & Industrial Trades": [
-    "Industrial Electrician",
-    "Industrial Plumber",
-    "Mechanical Fitter",
-    "Pipefitter",
-    "Welder",
-    "Fabricator"
-  ]
-};
+onMounted(() => {
+ 
+  const response = await fetch('/data/trades.json');
+  const data = await response.json();
+  trades.value = data;
+
+});
 
 function search() {
   const q = (searchString.value || "").trim().toLowerCase();
 
   if (!q) {
     searchResults.value = [];
-    businessTypeState.value = "types";
+    businessTypeState.value = "trades";
     return;
   }
 
@@ -239,17 +108,26 @@ function search() {
     }
   }
 
+  if(results.length > 4) {
+    const deletecount = results.length - 4;
+    results.splice(4,deletecount);
+  }
+
   searchResults.value = [...new Set(results)];
   businessTypeState.value = "search";
 }
 
-function selectTradeType(type) {
-  currentTrades.value = trades[type] || [];
-  businessTypeState.value = "trades";
-}
 
-function selectTrade(trade) {
+const selectTrade = async (trade) => {
   store.form.trade = trade;
+  const formData = new FormData();
+  formData.append('trade',store.form.trade);
+
+  const response = await fetch('/api/set-trade', {
+    method:'post',
+    body : formData
+  }) 
+
   store.next();
 }
 

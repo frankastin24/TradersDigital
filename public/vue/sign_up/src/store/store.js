@@ -6,6 +6,7 @@ export const useAppStore = defineStore('appStore', {
         form : {
             id : 0,
             email : '',
+            password:'',
             businessName : '',
             phoneNumber : '',
             about : '',
@@ -13,7 +14,6 @@ export const useAppStore = defineStore('appStore', {
             package: 'professional',
             billing: 'annually'
         }
-        
     }),
     actions : {
         next() {

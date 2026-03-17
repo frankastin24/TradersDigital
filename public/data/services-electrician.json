@@ -1,0 +1,246 @@
+{
+  "trade": "electrician",
+  "currency": "GBP",
+  "service_categories": [
+    {
+      "category": "Installations",
+      "services": [
+        {
+          "service": "Install new socket outlet",
+          "estimated_time": "1-2 hours",
+          "price_min": 80,
+          "price_max": 150,
+          "featured": true
+        },
+        {
+          "service": "Install additional double socket",
+          "estimated_time": "1-3 hours",
+          "price_min": 90,
+          "price_max": 180,
+          "featured": true
+        },
+        {
+          "service": "Install light fitting",
+          "estimated_time": "30-60 minutes",
+          "price_min": 50,
+          "price_max": 120,
+          "featured": true
+        },
+        {
+          "service": "Install LED downlights",
+          "estimated_time": "2-4 hours",
+          "price_min": 200,
+          "price_max": 500,
+          "featured": false
+        },
+        {
+          "service": "Install extractor fan",
+          "estimated_time": "2-4 hours",
+          "price_min": 150,
+          "price_max": 350,
+          "featured": false
+        },
+        {
+          "service": "Install electric shower",
+          "estimated_time": "3-5 hours",
+          "price_min": 250,
+          "price_max": 600,
+          "featured": false 
+        },
+        {
+          "service": "Install cooker circuit",
+          "estimated_time": "2-4 hours",
+          "price_min": 200,
+          "price_max": 450,
+          "featured": false
+        },
+        {
+          "service": "Install outdoor lighting",
+          "estimated_time": "2-5 hours",
+          "price_min": 180,
+          "price_max": 500,
+          "featured": false
+        },
+        {
+          "service": "Install EV charger",
+          "estimated_time": "4-6 hours",
+          "price_min": 700,
+          "price_max": 1200,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "category": "Repairs",
+      "services": [
+        {
+          "service": "Fault finding and diagnostics",
+          "estimated_time": "1-3 hours",
+          "price_min": 80,
+          "price_max": 250,
+          "featured": false
+        },
+        {
+          "service": "Repair socket outlet",
+          "estimated_time": "30-90 minutes",
+          "price_min": 60,
+          "price_max": 150,
+          "featured": false 
+        },
+        {
+          "service": "Repair light fitting",
+          "estimated_time": "30-90 minutes",
+          "price_min": 60,
+          "price_max": 140,
+          "featured": false
+        },
+        {
+          "service": "Fix tripping circuit breaker",
+          "estimated_time": "1-3 hours",
+          "price_min": 100,
+          "price_max": 300,
+          "featured": false
+        },
+        {
+          "service": "Repair damaged wiring",
+          "estimated_time": "1-4 hours",
+          "price_min": 120,
+          "price_max": 400,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "category": "Testing and Safety",
+      "services": [
+        {
+          "service": "Electrical Installation Condition Report (EICR)",
+          "estimated_time": "2-4 hours",
+          "price_min": 120,
+          "price_max": 300,
+          "featured": false
+        },
+        {
+          "service": "PAT testing",
+          "estimated_time": "1-3 hours",
+          "price_min": 60,
+          "price_max": 200,
+          "featured": false
+        },
+        {
+          "service": "Landlord electrical safety certificate",
+          "estimated_time": "2-4 hours",
+          "price_min": 120,
+          "price_max": 280,
+          "featured": false
+        },
+        {
+          "service": "Smoke alarm testing and replacement",
+          "estimated_time": "30-60 minutes",
+          "price_min": 50,
+          "price_max": 120,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "category": "Upgrades",
+      "services": [
+        {
+          "service": "Consumer unit upgrade",
+          "estimated_time": "4-8 hours",
+          "price_min": 450,
+          "price_max": 900,
+          "featured": false
+        },
+        {
+          "service": "Replace fuse board",
+          "estimated_time": "4-8 hours",
+          "price_min": 450,
+          "price_max": 900,
+          "featured": false
+        },
+        {
+          "service": "LED lighting upgrade",
+          "estimated_time": "2-5 hours",
+          "price_min": 200,
+          "price_max": 600,
+          "featured": false
+        },
+        {
+          "service": "Install smart thermostat",
+          "estimated_time": "1-2 hours",
+          "price_min": 120,
+          "price_max": 250,
+          "featured": false
+        },
+        {
+          "service": "Install surge protection device",
+          "estimated_time": "1-2 hours",
+          "price_min": 120,
+          "price_max": 300,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "category": "Large Jobs",
+      "services": [
+        {
+          "service": "Partial house rewire",
+          "estimated_time": "1-3 days",
+          "price_min": 1500,
+          "price_max": 4000,
+          "featured": false
+        },
+        {
+          "service": "Full house rewire (3 bed)",
+          "estimated_time": "5-10 days",
+          "price_min": 4000,
+          "price_max": 8000,
+          "featured": false
+        },
+        {
+          "service": "Garage electrical installation",
+          "estimated_time": "1-2 days",
+          "price_min": 600,
+          "price_max": 1800,
+          "featured": false
+        },
+        {
+          "service": "Garden electrical installation",
+          "estimated_time": "1-3 days",
+          "price_min": 800,
+          "price_max": 3000,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "category": "Emergency",
+      "services": [
+        {
+          "service": "Emergency call-out",
+          "estimated_time": "1-2 hours",
+          "price_min": 120,
+          "price_max": 250,
+          "featured": false
+        },
+        {
+          "service": "Power outage repair",
+          "estimated_time": "1-4 hours",
+          "price_min": 120,
+          "price_max": 400,
+          "featured": false
+        },
+        {
+          "service": "Burning smell / urgent electrical fault",
+          "estimated_time": "1-3 hours",
+          "price_min": 120,
+          "price_max": 350,
+          "featured": false
+        }
+      ]
+    }
+  ]
+}

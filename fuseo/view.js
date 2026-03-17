@@ -33,7 +33,8 @@ const view = async (path,data,context) => {
     getTemplatePart,
     getHeader,
     getFooter,
-    context
+    context,
+    data
    
     }
     viewContext.viewContext = viewContext;

@@ -1,0 +1,38 @@
+
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Package</th>
+        <th>Reg Date</th>
+        <th>Reg Complete</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+   <% for(trader of traders) { 
+    const dateTime = trader.createdAt.getDay() + '/' + trader.createdAt.getMonth() + '/' + trader.createdAt.getYear();
+   
+    %>
+        <tr>
+            <td><%= trader.email %></td>
+            <td><%= trader.package %></td>
+            <td><%= dateTime %></td>
+            <td><%= trader.regComplete %></td>
+            <td><button>Suspend</button></td>
+            <td><button data-id="<%= trader.id %>" class="delete-trader">Delete</button></td>
+        </tr>
+    <% } %>
+    
+</table>
+
+<script>
+   const deleteButtons = document.querySelectorAll('.delete-trader');
+
+   deleteButtons.forEach((element) => {
+       element.addEventListener('click', async (e) => {
+        const response = await fetch('/api/delete-trader?id='+e.currentTarget.dataset.id);
+        window.location = '/super';   
+    })
+   })
+
+</script>
