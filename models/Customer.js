@@ -38,3 +38,5 @@ const Customer = global.db.define('customer', {
         allowNull: true
     }
 });
+
+export default Customer;

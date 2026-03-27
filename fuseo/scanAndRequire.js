@@ -1,16 +1,17 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { pathToFileURL } from 'url';
 
 /**
  * Scans a directory for .js files and requires each of them.
  * @param {string} dir - The directory to scan.
  * @returns {object} An object with file names as keys and required modules as values.
  */
-function scanAndRequire(dir) {
+async function scanAndRequire(dir) {
   const files = fs.readdirSync(dir);
   const requiredModules = {};
 
-  files.forEach(file => {
+  for (const file of files) {
     const fullPath = path.join(dir, file);
     if (
       fs.statSync(fullPath).isFile() &&
@@ -18,9 +19,10 @@ function scanAndRequire(dir) {
     ) {
       // Remove extension for key, require the module
       const key = path.basename(file, '.js');
-      requiredModules[key] = require(fullPath);
+      const mod = await import(pathToFileURL(fullPath).href);
+      requiredModules[key] = mod.default || mod;
     }
-  });
+  }
 
   return requiredModules;
 }
@@ -29,4 +31,4 @@ function scanAndRequire(dir) {
 // const modules = scanAndRequire(__dirname + '/your-directory');
 // console.log(modules);
 
-module.exports = scanAndRequire;
+export default scanAndRequire;

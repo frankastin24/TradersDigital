@@ -2,6 +2,7 @@
   "name": "hostcert",
   "version": "1.0.0",
   "description": "A web platform for the hospitality sector",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "run": "node index.js"

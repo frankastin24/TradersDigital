@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // HTML escaping function
 function escapeHTML(str) {
@@ -144,7 +144,7 @@ function renderSync(template, data = {}, opts = {}) {
   return fn(data, escapeHTML, ()=>"");
 }
 
-module.exports = {
+export {
   renderAsync,
   renderFileAsync,
   renderSync,

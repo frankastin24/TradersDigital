@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 
 function serveStaticIfExists(staticDir) {
   return function(req, res, next) {
@@ -17,4 +17,4 @@ function serveStaticIfExists(staticDir) {
   };
 }
 
-module.exports = serveStaticIfExists;
+export default serveStaticIfExists;

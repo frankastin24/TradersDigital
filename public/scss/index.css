@@ -170,26 +170,6 @@ button {
   font-size: 20px;
 }
 
-/* FOOTER */
-footer {
-  background: #f1f1f1;
-  padding: 40px 0;
-  text-align: center;
-}
-
-footer .footer-links {
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-footer .footer-contact {
-  font-size: 14px;
-  color: #555;
-}
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-content {
@@ -401,9 +381,8 @@ footer .footer-contact {
   background-position: center;
 }
 .hero .hero-content {
-  padding-top: 210px;
-  padding-bottom: 80px;
   background: rgba(0, 0, 0, 0.8);
+  height: 100%;
 }
 .hero .hero-content .hero-text {
   max-width: 800px;
@@ -411,35 +390,30 @@ footer .footer-contact {
 .hero .hero-content .hero-text h1 {
   font-size: 80px;
   line-height: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #04e0ec;
   text-align: center;
   font-size: 51px;
   line-height: 60px;
-  margin-top: 100px;
 }
 .hero .hero-content .hero-text p {
   font-size: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #50c4fa;
+  line-height: 50px;
 }
-.hero .hero-content h4 {
+.hero .hero-content .hero-text h4 {
   font-weight: 500;
   color: #FFF;
-  font-size: 17px;
-  margin-top: 30px;
+  font-size: 14px;
+  margin-top: 20px;
   line-height: 36px;
 }
-.hero .hero-content h5 {
-  font-size: 16px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-.hero .hero-content .hero-buttons a {
+.hero .hero-content .hero-text .hero-buttons a {
   font-size: 20px;
-  background: #04e0ec;
+  background: #03585c;
   color: #fff;
-  padding: 20px 30px;
+  padding: 25px 40px;
   border-radius: 40px;
 }
 .hero .hero-content .hero-video iframe {
@@ -470,19 +444,24 @@ footer .footer-contact {
 }
 
 @media (min-width: 768px) {
+  .hero {
+    margin-top: 88px;
+    height: calc(100vh - 88px);
+  }
   .hero .hero-content .hero-text {
     max-width: 800px;
   }
   .hero .hero-content .hero-text h1 {
     font-size: 80px;
     line-height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-top: 0px;
     text-align: left;
   }
   .hero .hero-content .hero-text p {
     font-size: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: -15px;
   }
   .hero .hero-content h5 {
     font-size: 16px;
@@ -911,4 +890,43 @@ input.search {
   margin: 10px;
   min-width: calc(50% - 20px);
   cursor: pointer;
+}
+
+footer {
+  background: #f1f1f1;
+  padding: 40px 0;
+  text-align: center;
+}
+footer .footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+footer .footer-links a {
+  color: #555;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+footer .footer-links a:hover {
+  color: #00969e;
+}
+footer .footer-contact {
+  font-size: 14px;
+  color: #555;
+}
+footer .btn {
+  background: #00969e;
+  color: #fff;
+  padding: 10px 40px;
+  border-radius: 40px;
+  margin-top: 20px;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
 }/*# sourceMappingURL=index.css.map */

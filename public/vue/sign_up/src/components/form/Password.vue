@@ -18,6 +18,7 @@ const store = useAppStore();
 const displayPasswordError = ref(false);
 
 const  setPassword = async () => {
+    let isValid = true;
 
     const strongPasswordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
 
@@ -26,6 +27,10 @@ const  setPassword = async () => {
         isValid = false;
     } else {
         displayPasswordError.value = false;
+    }
+
+    if (!isValid) {
+        return;
     }
 
     const formData = new FormData();

@@ -1,4 +1,6 @@
-module.exports = (data, context) => {
+const sendJSON = (data, context) => {
     context.res.setHeader('Content-Type', 'application/json');
     context.res.status(200).send(JSON.stringify(data));
 }
+
+export default sendJSON;

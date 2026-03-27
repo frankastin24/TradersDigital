@@ -6,8 +6,8 @@
  * Designed for Node.js.
  */
 
-const vm = require('vm');
-const { JSDOM } = require('jsdom');
+import vm from 'vm';
+import { JSDOM } from 'jsdom';
 
 /**
  * Main NPT compile function
@@ -194,4 +194,4 @@ async function replaceAsync(str, regex, asyncFn) {
   return str.replace(regex, () => results[i++]);
 }
 
-module.exports = { compileNPT };
+export { compileNPT };

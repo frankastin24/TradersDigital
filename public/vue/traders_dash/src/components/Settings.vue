@@ -18,5 +18,43 @@
             <button @click="changePassword">Update Password</button>        
         </div>
 
+        <button @click="store.setAppState('home')">Back</button>
+
     </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import { useAppStore } from '../store/store';
+
+const store = useAppStore();
+
+const email = ref('');
+const currentPassword = ref('');
+const newPassword = ref('');
+
+const changeEmail = () => {
+    if (!email.value) return;
+    store.changeEmail(email.value)
+        .then(() => {
+            alert('Email updated');
+            email.value = '';
+        })
+        .catch((error) => {
+            alert(error.message || 'Failed to update email');
+        });
+};
+
+const changePassword = () => {
+    if (!currentPassword.value || !newPassword.value) return;
+    store.changePassword(currentPassword.value, newPassword.value)
+        .then(() => {
+            alert('Password updated');
+            currentPassword.value = '';
+            newPassword.value = '';
+        })
+        .catch((error) => {
+            alert(error.message || 'Failed to update password');
+        });
+};
+</script>

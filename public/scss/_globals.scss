@@ -190,25 +190,6 @@ button {
     font-size: 20px;
 }
 
-/* FOOTER */
-footer {
-    background: #f1f1f1;
-    padding: 40px 0;
-    text-align: center;
-}
-
-footer .footer-links {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-footer .footer-contact {
-    font-size: 14px;
-    color: #555;
-}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

@@ -1,9 +1,6 @@
-let {renderAsync} = require('./ejsCompiler');
-
-const fs = require('fs');
-
-const __ = require('../includes/__');
-const { get } = require('./routing');
+import { renderAsync } from './ejsCompiler.js';
+import fs from 'fs';
+import __ from '../includes/__.js';
 
 const getTemplatePart = async (path,viewContext) => {
     const ejxstring = fs.readFileSync(global.__app_path +'/views/' + path + '.ejs', 'utf8');
@@ -45,4 +42,4 @@ const view = async (path,data,context) => {
     
 }
 
-module.exports = {view, getTemplatePart};
+export { view, getTemplatePart };

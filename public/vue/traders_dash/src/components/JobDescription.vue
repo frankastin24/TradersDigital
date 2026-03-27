@@ -1,5 +1,6 @@
 <template>
     <div class="job-description">
+        <template v-if="store.selectedJob">
         <h1>Job Details</h1>
 
         <p><strong>Job ID:</strong> {{ store.selectedJob.id }}</p>
@@ -22,20 +23,33 @@
 
         <p><strong>Date:</strong></p>
         <p>{{ store.selectedJob.date }}</p> 
-        <button @click="store.appState = 'change-job-date'">Change Date</button>
+        <button @click="store.appState = 'changeJobDate'">Change Date</button>
         
         <p><strong>Duration:</strong></p>
         <p>{{ store.selectedJob.duration }}</p> 
-        <button @click="store.appState = 'change-job-duration'">Change Duration</button>
+        <button @click="store.appState = 'home'">Change Duration</button>
         
         <p><strong>Description:</strong></p>
         <p>{{ store.selectedJob.description }}</p>
-        <button @click="store.appState = 'edit-job-description'">Edit Description</button>
+        <button @click="store.appState = 'home'">Edit Description</button>
 
         <p><strong>Notes:</strong></p>
         <p>{{ store.selectedJob.notes }}</p>
-        <button @click="store.appState = 'edit-job-notes'">Edit Notes</button>
+        <button @click="store.appState = 'home'">Edit Notes</button>
         
         <button @click="store.appState = 'home'">Back to Home</button>
+        </template>
+        <p v-else>No job selected.</p>
     </div>
 </template>
+
+<script setup>
+import { useAppStore } from '../store/store';
+
+const store = useAppStore();
+
+const updateJobStatus = () => {
+    if (!store.selectedJob) return;
+    store.updateSelectedJobStatus(store.selectedJob.status);
+};
+</script>

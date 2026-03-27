@@ -21,7 +21,7 @@ const saveDetails = async () => {
   formData.append('city',store.form.city);
   formData.append('phoneNumber',store.form.phoneNumber);
 
-  const response = await fetch('/api/set-name', {
+  const response = await fetch('/api/set-details', {
     method:'post',
     body : formData
   }) 

@@ -23,6 +23,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useAppStore } from '../store/store';
 const store = useAppStore();    
 
@@ -32,7 +33,7 @@ const phone = ref('');
 const address = ref('');
 const notes = ref(''); 
 
-const addCustomer = () => {
+const addCustomer = async () => {
 
     const newCustomer = {
         id: Date.now(),
@@ -43,23 +44,12 @@ const addCustomer = () => {
         notes: notes.value
     };
 
-    store.customers.push(newCustomer);
-
-    fetch('/api/customers', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newCustomer)
-    }  ).then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to add customer');
-        }
-    }).catch(error => {
-        console.error('Error adding customer:', error);
-    });
-
-    store.appState = 'customers';
+    try {
+        await store.addCustomer(newCustomer);
+        store.setAppState('customers');
+    } catch (error) {
+        alert(error.message || 'Failed to add customer');
+    }
 }
 
 </script>

@@ -1,4 +1,5 @@
-const path = require('path');
+import path from 'path';
+import { pathToFileURL } from 'url';
 
 // Initialize global routes if not already
 if (!global.__routes) {
@@ -38,7 +39,6 @@ class Router {
      */
     static async execute(context) {
         let reqPath = context.req.path;
-        console.log('[router] incoming', context.req.method, reqPath);
         
         if (reqPath.endsWith('/') && reqPath.length > 1) reqPath = reqPath.slice(0, -1);
         
@@ -69,8 +69,6 @@ class Router {
             }
         }
 
-        console.log('[router] matched route:', matched ? matched.route : null);
-        console.log('[router] routeVariables:', routeVariables);
 
         // Fallback: direct match with no variables
         if (!matched) {
@@ -103,7 +101,8 @@ class Router {
                 const controllerPath = path.join(process.cwd(), 'controllers', `${className}.js`);
                 let Controller;
                 try {
-                    Controller = require(controllerPath);
+                    const controllerModule = await import(pathToFileURL(controllerPath).href);
+                    Controller = controllerModule.default || controllerModule;
                 } catch (e) {
                     return context.res.status(500).json({ error: `Controller file not found: ${controllerPath}` });
                 }
@@ -142,4 +141,4 @@ class Router {
     }
 }
 
-module.exports = Router;
+export default Router;

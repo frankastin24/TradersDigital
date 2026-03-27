@@ -84,9 +84,9 @@ const tradeTypes = [
   "Commercial & Industrial Trades"
 ];
 
-onMounted(() => {
+onMounted(async () => {
  
-  const response = await fetch('/data/trades.json');
+  const response = await fetch('/public/data/trades.json');
   const data = await response.json();
   trades.value = data;
 

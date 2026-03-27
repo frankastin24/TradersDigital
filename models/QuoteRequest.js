@@ -19,4 +19,4 @@ const QuoteRequest = global.db.define('QuoteRequest', {
     }
 });
 
-module.exports = QuoteRequest;
+export default QuoteRequest;

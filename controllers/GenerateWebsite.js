@@ -1,19 +1,18 @@
-import OpenAI from "openai";
+import OpenAI from 'openai';
+import Website from '../models/Website.js';
+import Trader from '../models/Trader.js';
 
 class GenerateWebsite {
-    static async index(request, context) {
-        
-
-        return view('main_site/website_loader', {}, context);
-    }
-
     static async create(request, context) {
-        
-       
-
-        const Trader = require('../models/Trader.js');
-
         const currentTrader = await Trader.findByPk(context.session.userId);
+
+        if (!currentTrader) {
+            return context.res.status(404).json({ error: 'Trader not found' });
+        }
+
+        if (!currentTrader.trade || !currentTrader.businessName) {
+            return context.res.status(400).json({ error: 'Missing required trader profile fields' });
+        }
         
         const newWebsite = await Website.create({
             traderId: currentTrader.id,
@@ -30,11 +29,14 @@ class GenerateWebsite {
         })
         
         if(checkUrlExists) {
-           url = `${url}-${currentTrader.city.replace(/\s+/g, '-').toLowerCase()}}`;
+              url = `${url}-${(currentTrader.city || 'site').replace(/\s+/g, '-').toLowerCase()}`;
         }
 
+        newWebsite.url = url;
+        
+
         const client = new OpenAI({
-            apiKey: process.env.OPENAI_API_KEY
+            apiKey: global.__env.OPENAI_API_KEY
         });
 
         const response = await client.responses.create({
@@ -42,7 +44,13 @@ class GenerateWebsite {
         input: `Rewrite this into a professional About Us section:${currentTrader.trade} with ${currentTrader.experience} years of experience. Covering the following areas ${currentTrader.areas}`,
         });
 
+        newWebsite.aboutUs = response.output_text || 'Trusted local trade professionals delivering reliable service.';
+
+        await newWebsite.save();
+
+        return context.res.json({ url: newWebsite.url });
+
     }
 }
 
-module.exports = GenerateWebsite;
+export default GenerateWebsite;

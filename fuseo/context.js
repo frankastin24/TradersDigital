@@ -1,4 +1,4 @@
-module.exports = (req, res, next) => {
+const contextMiddleware = (req, res, next) => {
     req.context = {
         req,                   // original request object
         res,                   // original response object
@@ -9,3 +9,5 @@ module.exports = (req, res, next) => {
     };
     next();
 };
+
+export default contextMiddleware;

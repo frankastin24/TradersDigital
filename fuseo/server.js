@@ -1,10 +1,11 @@
-const express = require('express');
-const router = require('./routing');
-const session = require('express-session');
-const contextMiddleware = require('./context')
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const serveStaticIfExists = require('./serveStatic')
+import express from 'express';
+import router from './routing.js';
+import session from 'express-session';
+import SequelizeStoreFactory from 'connect-session-sequelize';
+import serveStaticIfExists from './serveStatic.js';
 const app = express();
+
+const SequelizeStore = SequelizeStoreFactory(session.Store);
 
 //Set Port
 
@@ -12,7 +13,7 @@ const port = (process.argv[2] ? process.argv[2] : 80 );
 
 //Setup Multer for file uploads
 
-const multer =  require('multer') ;
+import multer from 'multer';
 const upload = multer();
 
 //Setup urlencoded and json parsing
@@ -27,10 +28,10 @@ const store = new SequelizeStore({
 
 store.sync();
 app.use(session({
-  secret: 'your-secret-key',            // Change this to a strong secret for your app
+  secret: global.__env.SESSION_SECRET || 'dev-only-change-me',
   resave: false,                        // Don't save session if unmodified
   saveUninitialized: false,             // Don't create session until something stored
-  cookie: { secure: false } ,
+  cookie: { secure: global.__env.NODE_ENV === 'production' } ,
   store: store,            // Set to true if using HTTPS
 }));
 

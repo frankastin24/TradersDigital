@@ -1,4 +1,4 @@
-module.exports = (text) => {
+const __ = (text) => {
 
     if(global.__env.LANGUAGE === 'en'){
         return text;
@@ -9,3 +9,5 @@ module.exports = (text) => {
     // Add more languages as needed
 
 }
+
+export default __;

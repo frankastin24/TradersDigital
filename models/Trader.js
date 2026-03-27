@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize')
+import Sequelize from 'sequelize';
 const Trader = global.db.define('trader', {
 
     id: {
@@ -82,7 +82,8 @@ const Trader = global.db.define('trader', {
         type: Sequelize.STRING,
         allowNull: true
     },
-    services : {
+
+    mainServices : {
         type: Sequelize.STRING,
         allowNull: true
     },
@@ -114,5 +115,4 @@ const Trader = global.db.define('trader', {
         allowNull: true
     },
 }); 
-global.db.sync();
-module.exports = Trader;
+export default Trader;

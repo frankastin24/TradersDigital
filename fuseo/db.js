@@ -1,10 +1,7 @@
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
 
 const initializeDB = async () => {
-  console.log(global.__env.DB_HOSTNAME);
-  console.log(global.__env.DB_USERNAME);
-  console.log(global.__env.DB_PASSWORD);
-  sequelize = new Sequelize({
+  const sequelize = new Sequelize({
      dialect: 'mysql',
      host: global.__env.DB_HOSTNAME,
      username: global.__env.DB_USERNAME,
@@ -16,6 +13,7 @@ const initializeDB = async () => {
   try {
     await sequelize.authenticate();
     global.db = sequelize;
+    global.Sequelize = Sequelize;
     console.log('Database connection has been established successfully.');
     
   } catch (error) {
@@ -23,11 +21,8 @@ const initializeDB = async () => {
    
   }
 
-  
 
 }
 
-
-
-module.exports = {initializeDB};
+export { initializeDB };
 

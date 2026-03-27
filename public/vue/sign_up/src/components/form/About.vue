@@ -24,19 +24,17 @@ const store = useAppStore();
 
 const submit = async () => {
 
-    formData = new FormData();
+    const formData = new FormData();
     formData.append('experience', store.form.experience);
     formData.append('areas', store.form.areas);
-    formData.append('services', store.form.services);
+    formData.append('mainServices', store.form.services);
     
     const response = await fetch('/api/set-about', {
         method : 'post',
         body: formData
     });
 
-    await fetch('/api/generate-website', {
-        method : 'post'
-    })
+   
 
     window.location = '/generate-website';
 

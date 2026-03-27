@@ -4,10 +4,10 @@
         <div v-for="customer in store.customers" :key="customer.id" class="customer-card">
             <p><strong>Name:</strong> {{ customer.name }}</p>
             <p><strong>Email:</strong> {{ customer.email }}</p>
-            <button @click="store.appState = 'customerDetails'; store.selectedCustomer = customer">View Details</button>
+            <button @click="store.selectCustomer(customer)">View Details</button>
         </div>
         <p v-if="store.customers.length === 0">You have no customers yet.</p>
-        <button @click="store.appState = 'addCustomer'">Add Customer</button>
+        <button @click="store.setAppState('addCustomer')">Add Customer</button>
     </div>
 </template>
 

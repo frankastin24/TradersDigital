@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 const env = {};
 
   // Read file content
@@ -32,7 +32,7 @@ const env = {};
 
 global.__env = env;
 
-updateEnvVariable = (key,value) => {
+const updateEnvVariable = (key,value) => {
   let envContent = '';
 
   // Read the existing .env file
@@ -62,4 +62,4 @@ updateEnvVariable = (key,value) => {
   console.log(global.__app_path +'/.env' +`${key} updated to "${value}" in .env`);
 }
 
-module.exports = updateEnvVariable;
+export default updateEnvVariable;

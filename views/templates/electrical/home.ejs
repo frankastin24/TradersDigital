@@ -1,26 +1,19 @@
 <section id="hero">
 
-    <h1>Reliable Local Electrician in <%= Town %></h1>
+    <h1>NICEIC Approved Electrician in <%= Town %></h1>
     
-    <p>Fully qualified electrician providing fast, reliable electrical services for homes and businesses.</p>
+    <p>Fully qualified & insured electrician providing fast, reliable electrical services for homes and businesses.</p>
     
-    <button class="btn">Request A Quote</button>
-    <button class="btn">Call Now</button>
+    <p>24/7 Emergency Service</p>
+
+    <a href="tel:<%= phoneNumber %>" class="btn-primary">Call Now <%= phoneNumber %></a>
+
     <div class="flex trust-badges">
+        <img src="<%= imgDir %>/niceic-registered.png"/>
 
-    <% if (niceic) { %>
-
-    <img src="<%= imgDir %>/niceic-registered.png"/>
-
-    <% } %>
-
-    <% if (twentyFourSeven) { %>
-
-    <img src="<%= imgDir %>/twentyfourseven.png"/>
-
-    <% } %>
-
-    <img src="<%= imgDir %>/fully-insured.png" />
+        <img src="<%= imgDir %>/twentyfourseven.png"/>
+        
+        <img src="<%= imgDir %>/fully-insured.png" />
 
     </div>
 
